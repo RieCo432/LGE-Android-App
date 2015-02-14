@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_about">Iwwer</string>
+    <string name="app_banner">Déi offiziell LGE App</string>
+    <string name="choose_email_client">Wierl deng Email App:</string>
+    <string name="contact">Kontakt</string>
+    <string name="developer_label">Entw\u00EBckler</string>
+    <string name="feedback_subject">Feedback</string>
+    <string name="intranet">Bildschirm</string>
+    <string name="news">News</string>
+    <string name="send_feedback">Feedback</string>
+    <string name="subheader">Déi offiziell App</string>
+    <string name="title_activity_about">Iwwer</string>
+    <string name="feedback_message">Hei ass mein Feedback zur LGE App:</string>
+</resources>

@@ -1,0 +1,54 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".IntranetActivity">
+
+    <WebView
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/slideView">
+    </WebView>
+
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dip"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="@dimen/std_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/slide_back"
+            android:textColor="@color/white"
+            android:background="@color/deepblue"
+            android:textSize="@dimen/std_text_size"
+            android:layout_alignParentLeft="true"
+            android:onClick="slideBack"/>
+
+        <Button
+            android:layout_width="@dimen/std_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/slide_forward"
+            android:textColor="@color/white"
+            android:background="@color/deepblue"
+            android:textSize="@dimen/std_text_size"
+            android:layout_alignParentRight="true"
+            android:onClick="slideForward"/>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

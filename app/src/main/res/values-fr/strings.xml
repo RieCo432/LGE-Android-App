@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_about">À propos</string>
+    <string name="app_banner">L\'app Android officielle du LGE</string>
+    <string name="choose_email_client">Choisi ton service mail:</string>
+    <string name="contact">Contact</string>
+    <string name="developer_label">Dévelopeur:</string>
+    <string name="feedback_subject">Réaction</string>
+    <string name="intranet">Écran</string>
+    <string name="news">Nouveautées</string>
+    <string name="send_feedback">Réaction</string>
+    <string name="subheader">L\'app officielle</string>
+    <string name="title_activity_about">À propos</string>
+    <string name="feedback_message">I\u00E7i est ma réation à propos de l\'application LGE:</string>
+</resources>
