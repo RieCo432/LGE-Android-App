@@ -11,6 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 
 public class IntranetActivity extends ActionBarActivity {
 

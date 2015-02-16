@@ -28,8 +28,8 @@
     <string name="subheader">Déi offiziell App</string>
     <string name="title_activity_about">Iwwer</string>
     <string name="version_build" translatable="false">#8</string>
-    <string name="version_date" translatable="false">Wed Feb 15 2:53:10 CET 2015</string>
-    <string name="version_number" translatable="false">1.0 pre 8</string>
+    <string name="version_date" translatable="false">Wed Feb 16 4:52:20 CET 2015</string>
+    <string name="version_number" translatable="false">1.0 pre 8 (rc)</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
 
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TypographyDashes">
+
+    <!--the local log level for ga-->
+    <string name="ga_logLevel">verbose</string>
+
+    <!--how often the dispatcher should fire-->
+    <integer name="ga_dispatcherPeriod">30</integer>
+
+    <!--treat events as test events and don't send to google-->
+    <bool name="ga_dryRun">false</bool>
+
+    <!--the screen names that will appear in reports-->
+    <string name="com.lumi_dos.lge.MainActivity">Main</string>
+
+</resources>

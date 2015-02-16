@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 
 public class ContactActivity extends ActionBarActivity {
 
