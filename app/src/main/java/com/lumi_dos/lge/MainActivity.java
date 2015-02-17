@@ -20,20 +20,20 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         //Get a Tracker (should auto-report)
-        //((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
+        ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
     }
 
-    /*public void onStart() {
+    public void onStart() {
         super.onStart();
         //Get an Analytics tracker to report app starts & uncaught exceptions etc.
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
-    }*/
+    }
 
-    /*public void onStop() {
+    public void onStop() {
         super.onStop();
         //Stop the analytics tracking
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
-    }*/
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

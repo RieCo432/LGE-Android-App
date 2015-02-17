@@ -25,6 +25,9 @@ public class IntranetActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intranet);
 
+        //Get a Tracker (should auto-report)
+        ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
+
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         final WebView slideView = (WebView) findViewById(R.id.slideView);
         slideView.setVisibility(View.INVISIBLE);
@@ -44,6 +47,18 @@ public class IntranetActivity extends ActionBarActivity {
 
         slide_url = constructURL(currentSlideNumber);
         slideView.loadUrl(slide_url);
+    }
+
+    public void onStart() {
+        super.onStart();
+        //Get an Analytics tracker to report app starts & uncaught exceptions etc.
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    public void onStop() {
+        super.onStop();
+        //Stop the analytics tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
 

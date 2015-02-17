@@ -14,5 +14,12 @@
 
     <!--the screen names that will appear in reports-->
     <string name="com.lumi_dos.lge.MainActivity">Main</string>
+    <string name="com.lumi_dos.lge.AboutActivity">About</string>
+    <string name="com.lumi_dos.lge.IntranetActivity">Intranet</string>
+    <string name="com.lumi_dos.lge.NewsActivity">News</string>
+    <string name="com.lumi_dos.lge.ContactActivity">Contact</string>
+
+
+
 
 </resources>

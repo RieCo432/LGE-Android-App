@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class LGE extends Application {
 
     // The following line should be changed to include the correct property id.
-    private static final String PROPERTY_ID = "UA-47100626-4";
+    private static final String PROPERTY_ID = "UA-47100626-5";
 
     //Logging TAG
     private static final String TAG = "LGE";

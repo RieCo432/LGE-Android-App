@@ -21,6 +21,9 @@ public class NewsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        //Get a Tracker (should auto-report)
+        ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
+
         final WebView newsView = (WebView) findViewById(R.id.news_view);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         newsView.setWebViewClient(new WebViewClient());
@@ -36,6 +39,18 @@ public class NewsActivity extends ActionBarActivity {
         newsViewSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         newsViewSettings.setAppCacheEnabled(false);
         newsView.loadUrl(getString(R.string.base_calendar_url));
+    }
+
+    public void onStart() {
+        super.onStart();
+        //Get an Analytics tracker to report app starts & uncaught exceptions etc.
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    public void onStop() {
+        super.onStop();
+        //Stop the analytics tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
 

@@ -4,7 +4,7 @@
     tools:ignore="TypographyDashes">
 
     <!-- The apps Analytics Tracking Id -->
-    <string name="ga_trackingId">UA-47100626-4</string>
+    <string name="ga_trackingId">UA-47100626-5</string>
 
     <!-- Percentage of events to include in reports -->
     <string name="ga_sampleFrequency">100.0</string>
@@ -12,10 +12,10 @@
     <!-- Enable automatic Activity measurement -->
     <bool name="ga_autoActivityTracking">true</bool>
 
-    <!-- catch and report uncaught exceptions from the app -->
+    <!--catch and report uncaught exceptions from the app-->
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
-    <!-- How long a session exists before giving up -->
+    <!--How long a session exists before giving up-->
     <integer name="ga_sessionTimeout">-1</integer>
 
     <!-- If ga_autoActivityTracking is enabled, an alternate screen name can be specified to
@@ -23,5 +23,9 @@
     specify an alternate screen name use an <screenName> element, with the name attribute
     specifying the canonical name, and the value the alias to use instead. -->
     <screenName name="com.lumi_dos.lge.MainActivity">Main</screenName>
+    <screenName name="com.lumi_dos.lge.AboutActivity">About</screenName>
+    <screenName name="com.lumi_dos.lge.IntranetActivity">Intranet</screenName>
+    <screenName name="com.lumi_dos.lge.NewsActivity">News</screenName>
+    <screenName name="com.lumi_dos.lge.ContactActivity">Contact</screenName>
 
 </resources>
