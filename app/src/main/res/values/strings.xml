@@ -8,6 +8,7 @@
     <string name="base_intranet_url" translatable="false">http://lge.lumi-dos.com/app/intranet.html?slide=</string>
     <string name="base_calendar_url" translatable="false">http://lge.lumi-dos.com/app/calendar.html</string>
     <string name="choose_email_client">Wiel deng Email App:</string>
+    <string name="closeDrawer" translatable="false">Close</string>
     <string name="contact">Kontakt</string>
     <string name="credits_copyright" translatable="false">\u00A92015 Colin Ries</string>
     <string name="developer_label">Entw\u00Ebckler:</string>
@@ -20,6 +21,7 @@
     <string name="lge_full_name" translatable="false">Lycée de Gar\u00E7ons Esch</string>
     <string name="news">News</string>
     <string name="official_website" translatable="false">LGE.lu</string>
+    <string name="openDrawer" translatable="false">Open</string>
     <string name="phone_number" translatable="false">+352 55 62 85</string>
     <string name="send_feedback">Feedback</string>
     <string name="slide_back" translatable="false">\u2190</string>
@@ -27,9 +29,10 @@
     <string name="street_number" translatable="false">71, rue du Fossé</string>
     <string name="subheader">Déi offiziell App</string>
     <string name="title_activity_about">Iwwer</string>
-    <string name="version_build" translatable="false">#9</string>
-    <string name="version_date" translatable="false">Wed Feb 17 02:17:26 CET 2015</string>
-    <string name="version_number" translatable="false">1.0 pre 9 (rc &amp; rr)</string>
+    <string name="version_build" translatable="false">#10</string>
+    <string name="version_date" translatable="false">Fri Feb 20 02:26:57 CET 2015</string>
+    <string name="version_number" translatable="false">2.0 pre 1</string>
+    <string name="welcome" translatable="false">Welcome</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
 
 </resources>

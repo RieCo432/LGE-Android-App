@@ -9,5 +9,6 @@
     <dimen name="std_button_margin">33dp</dimen>
     <dimen name="std_text_margin">10dp</dimen>
     <dimen name="geek_info_space_margin">50dp</dimen>
+    <dimen name="tool_bar_top_padding">0dp</dimen>
 
 </resources>

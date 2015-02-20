@@ -2,16 +2,36 @@ package com.lumi_dos.lge;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.home};
+
+    String NAME = "LGE";
+    String EMAIL = "secretariat@lge.lu";
+    int PROFILE = R.drawable.ic_launcher;
+
+    private Toolbar toolbar;
+
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+    DrawerLayout Drawer;
+
+    ActionBarDrawerToggle mDrawerToggle;
+
 
 
     @Override
@@ -21,7 +41,47 @@ public class MainActivity extends ActionBarActivity {
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
+        String WELCOME = getString(R.string.welcome);
+        String INTRANET = getString(R.string.intranet);
+        String NEWS = getString(R.string.news);
+        String CONTACT = getString(R.string.contact);
+        String ABOUT = getString(R.string.action_about);
+        String OFFICIAL_WEBSITE = getString(R.string.official_website);
+
+        String TITLES[] = {WELCOME, INTRANET, NEWS, CONTACT, ABOUT, OFFICIAL_WEBSITE};
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mAdapter = new MyAdapter(TITLES, ICONS, NAME, EMAIL, PROFILE);
+
+        mRecyclerView.setAdapter(mAdapter);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, Drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                //code here will be executed when drawer gets opened
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                //code here gets executed  when drawer gets closed
+            }
+        };
+
+        Drawer.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
     }
+
 
     public void onStart() {
         super.onStart();
@@ -38,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.global, menu);
         return true;
     }
 
