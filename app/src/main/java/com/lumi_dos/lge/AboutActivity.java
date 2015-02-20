@@ -9,8 +9,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -23,6 +25,7 @@ public class AboutActivity extends ActionBarActivity {
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
     int PROFILE = R.drawable.ic_launcher;
+
 
     private Toolbar toolbar;
 
@@ -55,9 +58,64 @@ public class AboutActivity extends ActionBarActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new MyAdapter(TITLES, ICONS, NAME, EMAIL, PROFILE);
+        mAdapter = new MyAdapter(TITLES, ICONS, NAME, EMAIL, PROFILE, this);
 
         mRecyclerView.setAdapter(mAdapter);
+
+        final GestureDetector mGestureDetector = new GestureDetector(AboutActivity.this, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+
+        });
+
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+
+                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                    Drawer.closeDrawers();
+                    //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
+
+                    int itemClicked = recyclerView.getChildPosition(child);
+
+                    if(itemClicked == 1){
+                        Intent intent = new Intent(AboutActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    } else if(itemClicked == 2) {
+                        Intent intent = new Intent(AboutActivity.this, IntranetActivity.class);
+                        startActivity(intent);
+                    } else if(itemClicked == 3) {
+                        Intent intent = new Intent(AboutActivity.this, NewsActivity.class);
+                        startActivity(intent);
+                    } else if(itemClicked == 4) {
+                        Intent intent = new Intent(AboutActivity.this, ContactActivity.class);
+                        startActivity(intent);
+                    } else if(itemClicked == 5) {
+                        /*Intent intent = new Intent(AboutActivity.this, AboutActivity.class);
+                        startActivity(intent);*/
+                    } else if(itemClicked == 6) {
+                        Uri uri = Uri.parse("http://www.lge.lu");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+
+                    return true;
+
+                }
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+            }
+        });
+
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 

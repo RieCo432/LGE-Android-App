@@ -10,7 +10,7 @@
     <integer name="ga_dispatcherPeriod">10</integer>
 
     <!--treat events as test events and don't send to google-->
-    <bool name="ga_dryRun">true</bool>
+    <bool name="ga_dryRun">false</bool>
 
     <!--the screen names that will appear in reports-->
     <string name="com.lumi_dos.lge.MainActivity">Main</string>
@@ -18,8 +18,5 @@
     <string name="com.lumi_dos.lge.IntranetActivity">Intranet</string>
     <string name="com.lumi_dos.lge.NewsActivity">News</string>
     <string name="com.lumi_dos.lge.ContactActivity">Contact</string>
-
-
-
 
 </resources>

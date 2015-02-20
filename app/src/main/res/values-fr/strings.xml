@@ -12,4 +12,5 @@
     <string name="subheader">L\'app officielle</string>
     <string name="title_activity_about">À propos</string>
     <string name="feedback_message">I\u00E7i est ma réation à propos de l\'application LGE:</string>
+    <string name="welcome">Bienvenu</string>
 </resources>
