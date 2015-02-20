@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="TEST">HALLO</string>
     <string name="app_banner">Déi offiziell LGE Android App</string>
     <string name="action_about">Iwwer</string>
     <string name="app_autor" translatable="false">Colin Ries, 4M6</string>
