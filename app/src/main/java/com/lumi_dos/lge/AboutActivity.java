@@ -20,7 +20,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 
 public class AboutActivity extends ActionBarActivity {
 
-    int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.home};
+    int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.website, R.drawable.feedback};
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
@@ -53,8 +53,9 @@ public class AboutActivity extends ActionBarActivity {
         String CONTACT = getString(R.string.contact);
         String ABOUT = getString(R.string.action_about);
         String OFFICIAL_WEBSITE = getString(R.string.official_website);
+        String FEEDBACK = getString(R.string.send_feedback);
 
-        String TITLES[] = {WELCOME, INTRANET, NEWS, CONTACT, ABOUT, OFFICIAL_WEBSITE};
+        String TITLES[] = {WELCOME, INTRANET, NEWS, CONTACT, ABOUT, OFFICIAL_WEBSITE, FEEDBACK};
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);

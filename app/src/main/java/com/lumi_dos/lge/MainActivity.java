@@ -20,7 +20,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 
 public class MainActivity extends ActionBarActivity {
 
-    int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.home};
+    int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.website, R.drawable.feedback};
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
@@ -54,8 +54,9 @@ public class MainActivity extends ActionBarActivity {
         String CONTACT = getString(R.string.contact);
         String ABOUT = getString(R.string.action_about);
         String OFFICIAL_WEBSITE = getString(R.string.official_website);
+        String FEEDBACK = getString(R.string.send_feedback);
 
-        String TITLES[] = {WELCOME, INTRANET, NEWS, CONTACT, ABOUT, OFFICIAL_WEBSITE};
+        String TITLES[] = {WELCOME, INTRANET, NEWS, CONTACT, ABOUT, OFFICIAL_WEBSITE, FEEDBACK};
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -102,6 +103,16 @@ public class MainActivity extends ActionBarActivity {
                         Uri uri = Uri.parse("http://www.lge.lu");
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
+                    } else if(itemClicked == 7) {
+                        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                "mailto", getString(R.string.feedback_address), null));
+
+                        String subject = getString(R.string.feedback_subject);
+                        String message = getString(R.string.feedback_message);
+
+                        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                        intent.putExtra(Intent.EXTRA_TEXT, message);
+                        startActivity(Intent.createChooser(intent, getString(R.string.choose_email_client)));
                     }
 
                     return true;

@@ -19,7 +19,7 @@
     <string name="header" translatable="false">LGE</string>
     <string name="intranet">Bildschirm</string>
     <string name="lge_full_name" translatable="false">Lycée de Gar\u00E7ons Esch</string>
-    <string name="news">News</string>
+    <string name="news">Kalenner</string>
     <string name="official_website" translatable="false">LGE.LU</string>
     <string name="openDrawer" translatable="false">Open</string>
     <string name="phone_number" translatable="false">+352 55 62 85</string>
@@ -29,9 +29,9 @@
     <string name="street_number" translatable="false">71, rue du Fossé</string>
     <string name="subheader">Déi offiziell App</string>
     <string name="title_activity_about">Iwwer</string>
-    <string name="version_build" translatable="false">#10</string>
-    <string name="version_date" translatable="false">Fri Feb 20 03:48:06 CET 2015</string>
-    <string name="version_number" translatable="false">2.0 pre 1</string>
+    <string name="version_build" translatable="false">#11</string>
+    <string name="version_date" translatable="false">Fri Feb 21 04:45:57 CET 2015</string>
+    <string name="version_number" translatable="false">2.0 pre 2</string>
     <string name="welcome">W\u00EBllkommen</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
 

@@ -8,8 +8,8 @@ android {
         applicationId "com.lumi_dos.lge"
         minSdkVersion 9
         targetSdkVersion 21
-        versionCode 10
-        versionName "2.0 pre 1"
+        versionCode 11
+        versionName "2.0 pre 2"
     }
     buildTypes {
         release {
