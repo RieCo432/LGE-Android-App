@@ -29,7 +29,7 @@
     <string name="title_activity_about">Iwwer</string>
     <string name="version_build" translatable="false">#9</string>
     <string name="version_date" translatable="false">Wed Feb 17 02:17:26 CET 2015</string>
-    <string name="version_number" translatable="false">1.0 pre 9 (rc &amp; rr)</string>
+    <string name="version_number" translatable="false">1.0</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
 
 </resources>
