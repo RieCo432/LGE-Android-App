@@ -23,15 +23,16 @@
     <string name="official_website" translatable="false">LGE.LU</string>
     <string name="openDrawer" translatable="false">Open</string>
     <string name="phone_number" translatable="false">+352 55 62 85</string>
+    <string name="placeholder_loading" translatable="false">loading...</string>
     <string name="send_feedback">Feedback</string>
     <string name="slide_back" translatable="false">\u2190</string>
     <string name="slide_forward" translatable="false">\u2192</string>
     <string name="street_number" translatable="false">71, rue du Fossé</string>
     <string name="subheader">Déi offiziell App</string>
     <string name="title_activity_about">Iwwer</string>
-    <string name="version_build" translatable="false">#11</string>
-    <string name="version_date" translatable="false">Fri Feb 21 04:45:57 CET 2015</string>
-    <string name="version_number" translatable="false">2.0 pre 2</string>
+    <string name="version_build" translatable="false">#12</string>
+    <string name="version_date" translatable="false">Fri Feb 27 18:44:27 CET 2015</string>
+    <string name="version_number" translatable="false">2.0 pre 3</string>
     <string name="welcome">W\u00EBllkommen</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
 

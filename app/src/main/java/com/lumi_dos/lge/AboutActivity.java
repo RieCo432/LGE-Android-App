@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
@@ -24,7 +25,7 @@ public class AboutActivity extends ActionBarActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
-    int PROFILE = R.drawable.ic_launcher;
+    int PROFILE = R.drawable.profile;
 
 
     private Toolbar toolbar;
@@ -137,6 +138,18 @@ public class AboutActivity extends ActionBarActivity {
 
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        String versionName = BuildConfig.VERSION_NAME;
+        String versionCode = Integer.toString(BuildConfig.VERSION_CODE);
+        String versionDate = BuildConfig.versionDate;
+
+        TextView versionNameText = (TextView) findViewById(R.id.version_number);
+        TextView versionCodeText = (TextView) findViewById(R.id.version_build);
+        TextView versionDateText = (TextView) findViewById(R.id.version_date);
+
+        versionNameText.setText("Version: " + versionName);
+        versionCodeText.setText("Build: #" + versionCode);
+        versionDateText.setText("Date: " + versionDate);
 
     }
 

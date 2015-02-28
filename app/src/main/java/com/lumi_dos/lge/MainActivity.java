@@ -24,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
-    int PROFILE = R.drawable.ic_launcher;
+    int PROFILE = R.drawable.profile;
 
     private Toolbar toolbar;
 

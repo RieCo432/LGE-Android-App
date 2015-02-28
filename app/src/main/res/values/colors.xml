@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="deepblue">#000066</color>
+    <color name="xtradeepblue">#000050</color>
+    <color name="lightgreen">#8ED500</color>
+    <color name="lessligthgreen">#6BA000</color>
     <color name="white">#FFFFFF</color>
-    <color name="ColorPrimary">#000066</color>
-    <color name="ColorPrimaryDark">#000050</color>
+    <color name="ColorPrimary">#8BC34A</color>
+    <color name="ColorPrimaryDark">#689F38</color>
 
 </resources>

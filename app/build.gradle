@@ -8,15 +8,33 @@ android {
         applicationId "com.lumi_dos.lge"
         minSdkVersion 9
         targetSdkVersion 21
-        versionCode 11
-        versionName "2.0 pre 2"
+        versionCode 12
+        versionName "2.0 pre 3"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String" , "versionDate" , getDate()
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String" , "versionDate" , getDate()
         }
     }
+}
+
+def getDate() {
+    def date = new Date()
+    def year = date.format('yyyy')
+    def month = date.format('MM')
+    def day = date.format('dd')
+    def hour = date.format('HH')
+    def minute = date.format('mm')
+    def second = date.format('ss')
+    def formattedDate = "\"" + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second + "\""
+    return formattedDate
 }
 
 dependencies {
@@ -26,4 +44,5 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.google.android.gms:play-services:6.1.71'
     compile 'de.hdodenhof:circleimageview:1.2.1'
+    compile 'com.squareup.picasso:picasso:2.5.0'
 }

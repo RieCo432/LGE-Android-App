@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/lge_full_name"
         android:layout_below="@id/tool_bar"
         android:layout_margin="@dimen/std_text_margin"/>
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/phone_number"
         android:layout_below="@id/lge_full_name"
         android:layout_margin="@dimen/std_text_margin"/>
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/email_secretary"
         android:layout_below="@id/phone_number"
         android:layout_margin="@dimen/std_text_margin"/>
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/street_number"
         android:layout_below="@+id/email_secretary"
         android:layout_marginLeft="@dimen/std_text_margin"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/version_build"
         android:layout_below="@id/street_number"
         android:layout_marginLeft="@dimen/std_text_margin"
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/developer_contact"
         android:layout_margin="@dimen/std_text_margin"
         android:layout_alignParentBottom="true"/>
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/developer_name"
         android:layout_margin="@dimen/std_text_margin"
         android:layout_above="@id/developer_contact"/>
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
-        android:textColor="@color/deepblue"
+        android:textColor="@color/ColorPrimary"
         android:id="@+id/developer_label"
         android:layout_margin="@dimen/std_text_margin"
         android:layout_above="@id/developer_name"/>

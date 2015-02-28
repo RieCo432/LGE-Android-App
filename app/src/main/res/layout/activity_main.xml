@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/header"
                     android:textSize="179sp"
-                    android:textColor="@color/deepblue"
+                    android:textColor="@color/ColorPrimary"
                     android:id="@+id/header"
                     android:layout_centerHorizontal="true"/>
 
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/subheader"
                     android:textSize="46sp"
-                    android:textColor="@color/deepblue"
+                    android:textColor="@color/ColorPrimary"
                     android:layout_below="@id/header"
                     android:layout_centerHorizontal="true"/>
 
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/intranet"
                     android:textColor="@color/white"
-                    android:background="@color/deepblue"
+                    android:background="@color/ColorPrimary"
                     android:textSize="@dimen/std_text_size"
                     android:layout_alignParentLeft="true"
                     android:onClick="startIntranet"/>
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/news"
                     android:textColor="@color/white"
-                    android:background="@color/deepblue"
+                    android:background="@color/ColorPrimary"
                     android:textSize="@dimen/std_text_size"
                     android:layout_alignParentRight="true"
                     android:onClick="startNews"/>
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/contact"
                     android:textColor="@color/white"
-                    android:background="@color/deepblue"
+                    android:background="@color/ColorPrimary"
                     android:textSize="@dimen/std_text_size"
                     android:layout_alignParentLeft="true"
                     android:onClick="startContact"/>
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/official_website"
                     android:textColor="@color/white"
-                    android:background="@color/deepblue"
+                    android:background="@color/ColorPrimary"
                     android:textSize="@dimen/std_text_size"
                     android:layout_alignParentRight="true"
                     android:onClick="startWebsite"/>

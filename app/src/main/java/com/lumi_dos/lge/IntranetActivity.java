@@ -14,12 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.squareup.picasso.Picasso;
 
 
 public class IntranetActivity extends ActionBarActivity {
@@ -28,7 +26,7 @@ public class IntranetActivity extends ActionBarActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
-    int PROFILE = R.drawable.ic_launcher;
+    int PROFILE = R.drawable.profile;
 
     private Toolbar toolbar;
 
@@ -145,7 +143,7 @@ public class IntranetActivity extends ActionBarActivity {
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        /*final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         final WebView slideView = (WebView) findViewById(R.id.slideView);
         slideView.setVisibility(View.INVISIBLE);
         slideView.clearCache(true);
@@ -156,14 +154,22 @@ public class IntranetActivity extends ActionBarActivity {
             }
         });
         WebSettings webSettings = slideView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(true);*/
 
         //Keep for later, maybe it may be necessary to disable caching
         /*webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSettings.setAppCacheEnabled(false);*/
 
+        ImageView slideView = (ImageView) findViewById(R.id.slideView);
+
         slide_url = constructURL(currentSlideNumber);
-        slideView.loadUrl(slide_url);
+
+        Picasso instance = Picasso.with(this);
+        instance.setIndicatorsEnabled(true);
+        instance.load(slide_url).into(slideView);
+
+
+        //slideView.loadUrl(slide_url);
     }
 
     public void onStart() {
@@ -204,31 +210,46 @@ public class IntranetActivity extends ActionBarActivity {
     }
 
     public String constructURL(int slideNumber) {
-        return getString(R.string.base_intranet_url) + slideNumber;
+        //return getString(R.string.base_intranet_url) + slideNumber;
+        return "http://www.lge.lu/lgeapp/intranet/2006/1996/Slide" + slideNumber + ".JPG";
     }
 
     public void slideBack(View view) {
         if(currentSlideNumber > 1) {
             currentSlideNumber--;
             initializeLoadingSequence(view);
-            slide_url = constructURL(currentSlideNumber);
+            /*slide_url = constructURL(currentSlideNumber);
             WebView slideView = (WebView) findViewById(R.id.slideView);
-            slideView.loadUrl(slide_url);
+            slideView.loadUrl(slide_url);*/
+            ImageView slideView = (ImageView) findViewById(R.id.slideView);
+
+            slide_url = constructURL(currentSlideNumber);
+
+            Picasso instance = Picasso.with(this);
+            instance.setIndicatorsEnabled(true);
+            instance.load(slide_url).into(slideView);
         }
     }
 
     public void slideForward(View view) {
         currentSlideNumber++;
         initializeLoadingSequence(view);
-        slide_url = constructURL(currentSlideNumber);
+        /*slide_url = constructURL(currentSlideNumber);
         WebView slideView = (WebView) findViewById(R.id.slideView);
-        slideView.loadUrl(slide_url);
+        slideView.loadUrl(slide_url);*/
+        ImageView slideView = (ImageView) findViewById(R.id.slideView);
+
+        slide_url = constructURL(currentSlideNumber);
+
+        Picasso instance = Picasso.with(this);
+        instance.setIndicatorsEnabled(true);
+        instance.load(slide_url).into(slideView);
     }
 
     public void initializeLoadingSequence(View view) {
-        WebView slideView = (WebView) findViewById(R.id.slideView);
+        /*WebView slideView = (WebView) findViewById(R.id.slideView);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         slideView.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);*/
     }
 }

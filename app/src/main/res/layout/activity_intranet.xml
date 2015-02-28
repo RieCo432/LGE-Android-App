@@ -16,12 +16,18 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"/>
 
-    <WebView
+    <!--<WebView
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/slideView">
-    </WebView>
+    </WebView>-->
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/slideView"/>
 
     <RelativeLayout
         android:layout_width="320dp"
@@ -35,7 +41,7 @@
             android:layout_height="wrap_content"
             android:text="@string/slide_back"
             android:textColor="@color/white"
-            android:background="@color/deepblue"
+            android:background="@color/ColorPrimary"
             android:textSize="@dimen/std_text_size"
             android:layout_alignParentLeft="true"
             android:onClick="slideBack"/>
@@ -45,20 +51,20 @@
             android:layout_height="wrap_content"
             android:text="@string/slide_forward"
             android:textColor="@color/white"
-            android:background="@color/deepblue"
+            android:background="@color/ColorPrimary"
             android:textSize="@dimen/std_text_size"
             android:layout_alignParentRight="true"
             android:onClick="slideForward"/>
 
     </RelativeLayout>
 
-    <ProgressBar
+    <!--<ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />-->
 
 </RelativeLayout>
 
