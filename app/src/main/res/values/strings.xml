@@ -30,9 +30,6 @@
     <string name="street_number" translatable="false">71, rue du Fossé</string>
     <string name="subheader">Déi offiziell App</string>
     <string name="title_activity_about">Iwwer</string>
-    <string name="version_build" translatable="false">#12</string>
-    <string name="version_date" translatable="false">Fri Feb 27 18:44:27 CET 2015</string>
-    <string name="version_number" translatable="false">2.0 pre 3</string>
     <string name="welcome">W\u00EBllkommen</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
 

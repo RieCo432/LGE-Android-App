@@ -27,7 +27,6 @@
         android:layout_margin="@dimen/std_text_margin"/>
 
     <TextView
-        android:text="@string/placeholder_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"
@@ -48,7 +47,6 @@
         android:layout_marginTop="0dp"/>
 
     <TextView
-        android:text="@string/version_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/std_text_size"

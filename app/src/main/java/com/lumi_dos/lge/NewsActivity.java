@@ -105,6 +105,16 @@ public class NewsActivity extends ActionBarActivity {
                         Uri uri = Uri.parse("http://www.lge.lu");
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
+                    } else if(itemClicked == 7) {
+                        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                "mailto", getString(R.string.feedback_address), null));
+
+                        String subject = getString(R.string.feedback_subject);
+                        String message = getString(R.string.feedback_message);
+
+                        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                        intent.putExtra(Intent.EXTRA_TEXT, message);
+                        startActivity(Intent.createChooser(intent, getString(R.string.choose_email_client)));
                     }
 
                     return true;
