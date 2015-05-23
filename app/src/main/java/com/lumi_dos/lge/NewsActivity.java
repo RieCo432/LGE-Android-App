@@ -24,8 +24,6 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 
 public class NewsActivity extends ActionBarActivity {
 
-    int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.website, R.drawable.feedback};
-
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
     int PROFILE = R.drawable.profile;
@@ -50,15 +48,8 @@ public class NewsActivity extends ActionBarActivity {
         toolbar =(Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        String WELCOME = getString(R.string.welcome);
-        final String INTRANET = getString(R.string.intranet);
-        String NEWS = getString(R.string.news);
-        String CONTACT = getString(R.string.contact);
-        String ABOUT = getString(R.string.action_about);
-        String OFFICIAL_WEBSITE = getString(R.string.official_website);
-        String FEEDBACK = getString(R.string.send_feedback);
-
-        String TITLES[] = {WELCOME, INTRANET, NEWS, CONTACT, ABOUT, OFFICIAL_WEBSITE, FEEDBACK};
+        String TITLES[] = getResources().getStringArray(R.array.nav_drawer_titles);
+        int ICONS[] = LGE.ICONS;
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -78,44 +69,17 @@ public class NewsActivity extends ActionBarActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
-                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     Drawer.closeDrawers();
                     //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 
-                    if(itemClicked == 1){
-                        Intent intent = new Intent(NewsActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    } else if(itemClicked == 2) {
-                        Intent intent = new Intent(NewsActivity.this, IntranetActivity.class);
-                        startActivity(intent);
-                    } else if(itemClicked == 3) {
-                        /*Intent intent = new Intent(NewsActivity.this, NewsActivity.class);
-                        startActivity(intent);*/
-                    } else if(itemClicked == 4) {
-                        Intent intent = new Intent(NewsActivity.this, ContactActivity.class);
-                        startActivity(intent);
-                    } else if(itemClicked == 5) {
-                        Intent intent = new Intent(NewsActivity.this, AboutActivity.class);
-                        startActivity(intent);
-                    } else if(itemClicked == 6) {
-                        Uri uri = Uri.parse("http://www.lge.lu");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                    } else if(itemClicked == 7) {
-                        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                                "mailto", getString(R.string.feedback_address), null));
+                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                        String subject = getString(R.string.feedback_subject);
-                        String message = getString(R.string.feedback_message);
-
-                        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-                        intent.putExtra(Intent.EXTRA_TEXT, message);
-                        startActivity(Intent.createChooser(intent, getString(R.string.choose_email_client)));
-                    }
+                    startActivity(intent);
 
                     return true;
 

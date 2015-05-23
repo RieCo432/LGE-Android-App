@@ -13,4 +13,15 @@
     <string name="title_activity_about">Über</string>
     <string name="feedback_message">Hier ist mein Feedback zur LGE App:</string>
     <string name="welcome">Willkommen</string>
+
+    <string-array name="nav_drawer_titles">
+        <item>Willkommen</item>
+        <item>Bildschirm</item>
+        <item>Kalender</item>
+        <item>Kontakt</item>
+        <item>\Über</item>
+        <item>LGE.lu</item>
+        <item>Feedback</item>
+    </string-array>
+
 </resources>

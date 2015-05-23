@@ -23,7 +23,7 @@
     <string name="official_website" translatable="false">LGE.LU</string>
     <string name="openDrawer" translatable="false">Open</string>
     <string name="phone_number" translatable="false">+352 55 62 85</string>
-    <string name="placeholder_loading" translatable="false">loading...</string>
+    <string name="placeholder_loading" translatable="false">loading…</string>
     <string name="send_feedback">Feedback</string>
     <string name="slide_back" translatable="false">\u2190</string>
     <string name="slide_forward" translatable="false">\u2192</string>
@@ -32,5 +32,15 @@
     <string name="title_activity_about">Iwwer</string>
     <string name="welcome">W\u00EBllkommen</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
+
+    <string-array name="nav_drawer_titles">
+        <item>W\u00EBllkommen</item>
+        <item>Bildschirm</item>
+        <item>Kalenner</item>
+        <item>Kontakt</item>
+        <item>Iwwer</item>
+        <item>LGE.lu</item>
+        <item>Feedback</item>
+    </string-array>
 
 </resources>
