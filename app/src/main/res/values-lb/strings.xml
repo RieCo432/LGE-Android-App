@@ -8,8 +8,10 @@
     <string name="feedback_subject">Feedback</string>
     <string name="intranet">Bildschirm</string>
     <string name="news">Kalenner</string>
+    <string name="select_class">Wiel eng Klass</string>
     <string name="send_feedback">Feedback</string>
     <string name="subheader">Déi offiziell App</string>
+    <string name="timetables">Stonnepläng</string>
     <string name="title_activity_about">Iwwer</string>
     <string name="feedback_message">Hei ass mein Feedback zur LGE App:</string>
     <string name="welcome">W\u00EBllkommen</string>

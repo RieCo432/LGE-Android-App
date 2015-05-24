@@ -1,7 +1,6 @@
 package com.lumi_dos.lge;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -14,11 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 
-public class MainActivity extends ActionBarActivity {
+public class TimetablesActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
@@ -32,11 +37,10 @@ public class MainActivity extends ActionBarActivity {
     ActionBarDrawerToggle mDrawerToggle;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_timetables);
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
@@ -53,9 +57,10 @@ public class MainActivity extends ActionBarActivity {
 
         mRecyclerView.setAdapter(mAdapter);
 
-        final GestureDetector mGestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
+        final GestureDetector mGestureDetector = new GestureDetector(TimetablesActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
-            @Override public boolean onSingleTapUp(MotionEvent e) {
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
 
@@ -65,15 +70,15 @@ public class MainActivity extends ActionBarActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
-                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     Drawer.closeDrawers();
                     //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 
-                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked,getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
+                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
                     startActivity(intent);
 
@@ -110,6 +115,15 @@ public class MainActivity extends ActionBarActivity {
 
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        Spinner class_selector = (Spinner) findViewById(R.id.class_selector);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.classes, R.layout.spinner_item);
+
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+
+        class_selector.setAdapter(adapter);
+
+        class_selector.setOnItemSelectedListener(this);
 
     }
 
@@ -151,24 +165,40 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startIntranet(View view) {
-        Intent intent = new Intent(this, IntranetActivity.class);
-        startActivity(intent);
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if(position != 0) {
+
+            String position_string = Integer.toString(position);
+
+            if(position_string.length() < 2) {
+                position_string = "0" + position_string;
+            }
+
+            String timetable_url = getString(R.string.timetable_address_prefix) + position_string + getString(R.string.timetable_address_suffix);
+
+            WebView timetable_webview = (WebView) findViewById(R.id.timetable_webview);
+            WebSettings timetable_settings = timetable_webview.getSettings();
+            timetable_webview.setInitialScale(150);
+            timetable_settings.setSupportZoom(true);
+
+            timetable_webview.loadUrl(timetable_url);
+
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.select_class), Toast.LENGTH_LONG);
+            toast.show();
+        }
+
+        /*Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(position), Toast.LENGTH_SHORT);
+        toast.show();*/
+
     }
 
-    public void startTimetable(View view) {
-        Intent intent = new Intent(this, TimetablesActivity.class);
-        startActivity(intent);
-    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
-    public void startContact(View view) {
-        Intent intent = new Intent(this, ContactActivity.class);
-        startActivity(intent);
-    }
-
-    public void startWebsite(View view) {
-        Uri uri = Uri.parse("http://www.lge.lu");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
+        Toast toast = Toast.makeText(getApplicationContext(), "Select a class", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

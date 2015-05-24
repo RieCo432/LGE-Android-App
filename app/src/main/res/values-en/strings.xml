@@ -8,8 +8,10 @@
     <string name="feedback_subject">Feedback</string>
     <string name="intranet">Screen</string>
     <string name="news">Calendar</string>
+    <string name="select_class">Select a class</string>
     <string name="send_feedback">Feedback</string>
     <string name="subheader">The official app</string>
+    <string name="timetables">Timetables</string>
     <string name="title_activity_about">About</string>
     <string name="feedback_message">Here is my  feedback about the LGE App:</string>
     <string name="welcome">Welcome</string>

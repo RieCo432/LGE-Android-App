@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ColorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:elevation="4dp"
+    android:paddingTop="@dimen/tool_bar_top_padding">
+
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/class_selector"
+        android:color="@color/white"
+        android:layout_marginLeft="0dp"
+        android:layout_gravity="left">
+    </Spinner>
+
+
+</android.support.v7.widget.Toolbar>
+

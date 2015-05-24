@@ -8,8 +8,10 @@
     <string name="feedback_subject">Réaction</string>
     <string name="intranet">Écran</string>
     <string name="news">Calendrier</string>
+    <string name="select_class">Choisis une classe</string>
     <string name="send_feedback">Réaction</string>
     <string name="subheader">L\'app officielle</string>
+    <string name="timetables">Horaires</string>
     <string name="title_activity_about">À propos</string>
     <string name="feedback_message">I\u00E7i est ma réation à propos de l\'application LGE:</string>
     <string name="welcome">Bienvenu</string>
