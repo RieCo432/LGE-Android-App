@@ -19,6 +19,7 @@
     <string-array name="nav_drawer_titles">
         <item>Bienvenu</item>
         <item>Intranet</item>
+        <item>Horaires</item>
         <item>Calendrier</item>
         <item>Contact</item>
         <item>À propos</item>
