@@ -18,5 +18,6 @@
     <string name="com.lumi_dos.lge.IntranetActivity">Intranet</string>
     <string name="com.lumi_dos.lge.NewsActivity">News</string>
     <string name="com.lumi_dos.lge.ContactActivity">Contact</string>
+    <string name="com.lumi_dos.lge.TimetablesActivity">Timetables</string>
 
 </resources>

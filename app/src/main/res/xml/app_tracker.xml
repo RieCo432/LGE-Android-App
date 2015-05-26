@@ -27,5 +27,6 @@
     <screenName name="com.lumi_dos.lge.IntranetActivity">Intranet</screenName>
     <screenName name="com.lumi_dos.lge.NewsActivity">News</screenName>
     <screenName name="com.lumi_dos.lge.ContactActivity">Contact</screenName>
+    <screenName name="com.lumi_dos.lge.TimetablesActivity">Timetables</screenName>
 
 </resources>
