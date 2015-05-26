@@ -69,7 +69,6 @@ public class MainActivity extends ActionBarActivity {
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
-                    //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 

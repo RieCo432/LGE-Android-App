@@ -1,7 +1,6 @@
 package com.lumi_dos.lge;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -77,7 +76,6 @@ public class IntranetActivity extends ActionBarActivity {
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
-                    //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 
@@ -132,18 +130,7 @@ public class IntranetActivity extends ActionBarActivity {
         WebSettings webSettings = slideView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        //Keep for later, maybe it may be necessary to enable caching
-        /*webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        webSettings.setAppCacheEnabled(false);*/
-
-        //ImageView slideView = (ImageView) findViewById(R.id.slideView);
-
         slide_url = constructURL(currentSlideNumber);
-
-        /*Picasso instance = Picasso.with(this);
-        instance.setIndicatorsEnabled(true);
-        instance.load(slide_url).into(slideView);*/
-
 
         slideView.loadUrl(slide_url);
     }
@@ -187,7 +174,6 @@ public class IntranetActivity extends ActionBarActivity {
 
     public String constructURL(int slideNumber) {
         return getString(R.string.base_intranet_url) + slideNumber;
-        //return "http://www.lge.lu/lgeapp/intranet/2006/1996/Slide" + slideNumber;
     }
 
     public void slideBack(View view) {
@@ -197,14 +183,6 @@ public class IntranetActivity extends ActionBarActivity {
             slide_url = constructURL(currentSlideNumber);
             WebView slideView = (WebView) findViewById(R.id.slideView);
             slideView.loadUrl(slide_url);
-
-            /*ImageView slideView = (ImageView) findViewById(R.id.slideView);
-
-            slide_url = constructURL(currentSlideNumber);
-
-            Picasso instance = Picasso.with(this);
-            instance.setIndicatorsEnabled(true);
-            instance.load(slide_url).into(slideView);*/
         }
     }
 
@@ -215,13 +193,6 @@ public class IntranetActivity extends ActionBarActivity {
         WebView slideView = (WebView) findViewById(R.id.slideView);
         slideView.loadUrl(slide_url);
 
-        /*ImageView slideView = (ImageView) findViewById(R.id.slideView);
-
-        slide_url = constructURL(currentSlideNumber);
-
-        Picasso instance = Picasso.with(this);
-        instance.setIndicatorsEnabled(true);
-        instance.load(slide_url).into(slideView);*/
     }
 
     public void initializeLoadingSequence(View view) {

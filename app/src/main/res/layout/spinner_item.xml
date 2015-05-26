@@ -2,11 +2,11 @@
 
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:textSize="20dp"
-    android:textStyle="bold"
+    android:textSize="@dimen/abc_text_size_title_material_toolbar"
     android:textColor="@color/white"
+    android:textStyle="normal"
     android:padding="5dip"
-    android:background="@color/ColorPrimary"
+    android:background="?attr/selectableItemBackground"
     />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="classes">
-        <item>Klass</item>
+        <item>Klasse</item>
         <item>1A latine</item>
         <item>1A</item>
         <item>1B latine</item>

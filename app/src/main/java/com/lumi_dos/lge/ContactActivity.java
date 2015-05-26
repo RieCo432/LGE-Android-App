@@ -1,7 +1,6 @@
 package com.lumi_dos.lge;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -69,7 +68,6 @@ public class ContactActivity extends ActionBarActivity {
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
-                    //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 

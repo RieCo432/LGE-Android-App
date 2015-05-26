@@ -74,7 +74,6 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
                 if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     Drawer.closeDrawers();
-                    //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 
@@ -180,8 +179,9 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
             WebView timetable_webview = (WebView) findViewById(R.id.timetable_webview);
             WebSettings timetable_settings = timetable_webview.getSettings();
-            timetable_webview.setInitialScale(150);
             timetable_settings.setSupportZoom(true);
+            timetable_settings.setBuiltInZoomControls(true);
+            timetable_webview.setInitialScale(150);
 
             timetable_webview.loadUrl(timetable_url);
 
@@ -190,15 +190,12 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
             toast.show();
         }
 
-        /*Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(position), Toast.LENGTH_SHORT);
-        toast.show();*/
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Select a class", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.select_class), Toast.LENGTH_SHORT);
         toast.show();
     }
 }

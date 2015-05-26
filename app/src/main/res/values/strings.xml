@@ -24,7 +24,7 @@
     <string name="openDrawer" translatable="false">Open</string>
     <string name="phone_number" translatable="false">+352 55 62 85</string>
     <string name="placeholder_loading" translatable="false">loading…</string>
-    <string name="select_class">Select a class</string>
+    <string name="select_class">Wiel eng Klass</string>
     <string name="send_feedback">Feedback</string>
     <string name="slide_back" translatable="false">\u2190</string>
     <string name="slide_forward" translatable="false">\u2192</string>

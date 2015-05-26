@@ -21,8 +21,6 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 
 public class AboutActivity extends ActionBarActivity {
 
-    //int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.website, R.drawable.feedback};
-
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
     int PROFILE = R.drawable.profile;
@@ -71,7 +69,6 @@ public class AboutActivity extends ActionBarActivity {
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
                     Drawer.closeDrawers();
-                    //Toast.makeText(NewsActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 

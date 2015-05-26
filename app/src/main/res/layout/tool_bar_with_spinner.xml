@@ -11,12 +11,13 @@
 
 
     <Spinner
-        android:layout_width="150dp"
+        android:layout_alignRight="@+id/action_about"
+        android:layout_width="170dp"
         android:layout_height="fill_parent"
         android:id="@+id/class_selector"
         android:color="@color/white"
-        android:layout_marginLeft="0dp"
-        android:layout_gravity="left">
+        android:layout_marginRight="0dp"
+        android:layout_gravity="right">
     </Spinner>
 
 
