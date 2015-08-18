@@ -92,6 +92,11 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
             public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
 
             }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
         });
 
         mLayoutManager = new LinearLayoutManager(this);
