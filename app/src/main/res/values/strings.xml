@@ -36,6 +36,8 @@
     <string name="title_activity_about">Iwwer</string>
     <string name="welcome">W\u00EBllkommen</string>
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
+    <string name="sender_id" translatable="false">953167740477</string>
+    <string name="generalTopic">/topics/general</string>
 
     <string-array name="nav_drawer_titles">
         <item>W\u00EBllkommen</item>
