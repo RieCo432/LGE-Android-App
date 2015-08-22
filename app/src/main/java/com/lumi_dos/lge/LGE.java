@@ -3,17 +3,11 @@ package com.lumi_dos.lge;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.gcm.GcmPubSub;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class LGE extends Application {

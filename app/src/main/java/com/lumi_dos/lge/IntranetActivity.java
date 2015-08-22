@@ -138,6 +138,8 @@ public class IntranetActivity extends ActionBarActivity {
         slide_url = constructURL(currentSlideNumber);
 
         slideView.loadUrl(slide_url);
+
+
     }
 
     public void onStart() {

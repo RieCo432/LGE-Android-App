@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:layout_below="@id/tool_bar">
+            android:layout_below="@id/tool_bar"
+            android:id="@+id/relativeLayout">
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,8 +107,42 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/third_row"
+                android:layout_below="@id/second_row"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_centerHorizontal="true">
+
+                <ProgressBar
+                    android:id="@+id/registrationProgressBar"
+                    android:layout_width="@dimen/std_button_width"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"/>
+                <TextView
+                    android:id="@+id/informationTextView"
+                    android:layout_width="@dimen/std_button_width"
+                    android:layout_height="wrap_content"
+                    android:text="Info"
+                    android:textColor="@color/white"
+                    android:background="@color/ColorPrimary"
+                    android:textSize="@dimen/std_text_size"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar2"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignStart="@+id/relativeLayout"
+            android:layout_marginTop="77dp" />
 
     </RelativeLayout>
 

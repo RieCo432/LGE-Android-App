@@ -2,15 +2,15 @@ package com.lumi_dos.lge;
 
 import android.app.Activity;
 
-import com.google.android.gms.gcm.GcmPubSub;
-import com.lumi_dos.lge.LGE;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,13 +23,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-
-import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,12 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
     ActionBarDrawerToggle mDrawerToggle;
 
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private GoogleCloudMessaging gcm = null;
     private String SENDER_ID = "953167740477";
     public String regid;
 
-    public SharedPreferences prefs;
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private static final String TAG = "MainActivity";
+
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
+    private ProgressBar mRegistrationProgressBar;
+    private TextView mInformationTextView;
+
+    SharedPreferences prefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,34 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+
+
+
+
+
+        mRegistrationProgressBar = (ProgressBar) findViewById(R.id.registrationProgressBar);
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                mRegistrationProgressBar.setVisibility(ProgressBar.GONE);
+                SharedPreferences sharedPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(context);
+                boolean sentToken = sharedPreferences
+                        .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
+                if (sentToken) {
+                    mInformationTextView.setText("Sent");
+                } else {
+                    mInformationTextView.setText("Error sending token");
+                }
+            }
+        };
+        mInformationTextView = (TextView) findViewById(R.id.informationTextView);
+
+        if (checkPlayServices()) {
+            // Start IntentService to register this application with GCM.
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            startService(intent);
+        }
 
 
 
@@ -140,21 +174,6 @@ public class MainActivity extends AppCompatActivity {
 
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
-
-        if(!prefs.getBoolean("com.lumi_dos.lge.gcm_registered", false)) {
-
-            if (checkPlayServices(this)) {
-                getRegistrationId(this);
-                Log.i("GCM", "registered!");
-            }
-        }
-
-        if (!prefs.getBoolean("com.lumi_dos.lge.gcm_general_topic_registered", false)) {
-            String regToken = prefs.getString("com.lumi_dos.lge.gcm_id", null);
-            Log.i("GCM", "regToken: "+regToken);
-            subscribeToTopic("/topics/general");
-
-        }
     }
 
 
@@ -162,6 +181,19 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         //Get an Analytics tracker to report app starts & uncaught exceptions etc.
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
+    }
+
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
     }
 
     public void onStop() {
@@ -216,78 +248,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static boolean checkPlayServices(Context context) {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, (Activity) context,PLAY_SERVICES_RESOLUTION_REQUEST).show();
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
             } else {
-                Log.i("Developer", "This device is not supported.");
+                Log.i(TAG, "This device is not supported.");
+                finish();
             }
             return false;
         }
         return true;
     }
-
-
-
-    public void getRegistrationId(final Context context){
-        new AsyncTask<Void, Void, Void>(){
-
-            private String msg;
-
-            @Override
-            protected Void doInBackground(Void... arg0) {
-
-                if (gcm == null) {
-                    gcm = GoogleCloudMessaging.getInstance(context);
-                }
-
-                try {
-                    Log.i("Sender", SENDER_ID);
-
-                    regid = gcm.register(SENDER_ID);
-
-                    msg = "" + regid;
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-
-                }
-
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void result) {
-
-                Log.i("Developer", msg);
-                /*Toast.makeText(context, msg, Toast.LENGTH_LONG).show();*/
-                prefs.edit().putString("com.lumi_dos.lge.gcm_id", msg).apply();
-                prefs.edit().putBoolean("com.lumi_dos.lge.gcm_registered", true).apply();
-            }
-        }.execute();
-    }
-
-
-    //TODO: Get this fucking shit working
-    public void subscribeToTopic(final String topic) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String regToken = prefs.getString("com.lumi_dos.lge.gcm_id", null);
-                try {
-                    assert regToken != null;
-                    Log.i("GCM", "Subscribing");
-                    GcmPubSub.getInstance(getApplicationContext()).subscribe(regToken, "/topics/general", null);
-                    Log.i("GCM", "subscribed");
-                    prefs.edit().putBoolean("com.lumi_dos.lge.gcm_general_topic_registered", true).apply();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
 }
