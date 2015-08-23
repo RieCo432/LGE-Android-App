@@ -1,7 +1,5 @@
 package com.lumi_dos.lge;
 
-import android.app.Activity;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -44,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout Drawer;
 
     ActionBarDrawerToggle mDrawerToggle;
-
-    private GoogleCloudMessaging gcm = null;
-    private String SENDER_ID = "953167740477";
-    public String regid;
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";

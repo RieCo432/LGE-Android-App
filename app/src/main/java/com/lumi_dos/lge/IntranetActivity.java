@@ -13,9 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -38,6 +36,9 @@ public class IntranetActivity extends ActionBarActivity {
 
     public int currentSlideNumber = 1;
     public String slide_url;
+
+    public static ImageView slideView;
+    public static ProgressBar progressBar;
 
 
     @Override
@@ -122,22 +123,11 @@ public class IntranetActivity extends ActionBarActivity {
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        final WebView slideView = (WebView) findViewById(R.id.slideView);
-        slideView.setVisibility(View.INVISIBLE);
-        slideView.clearCache(true);
-        slideView.setWebViewClient(new WebViewClient(){
-            public void onPageFinished(WebView view, String url) {
-                progressBar.setVisibility(View.INVISIBLE);
-                slideView.setVisibility(View.VISIBLE);
-            }
-        });
-        WebSettings webSettings = slideView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
 
-        slide_url = constructURL(currentSlideNumber);
+        slideView = (ImageView) findViewById(R.id.slideView);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        new DownloadImageTask().execute("http://www.lge.lu/lgeapp/intranet/2006/1996/Slide1.JPG");
 
-        slideView.loadUrl(slide_url);
 
 
     }
@@ -179,33 +169,17 @@ public class IntranetActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String constructURL(int slideNumber) {
-        return getString(R.string.base_intranet_url) + slideNumber;
-    }
 
     public void slideBack(View view) {
         if(currentSlideNumber > 1) {
             currentSlideNumber--;
-            initializeLoadingSequence(view);
-            slide_url = constructURL(currentSlideNumber);
-            WebView slideView = (WebView) findViewById(R.id.slideView);
-            slideView.loadUrl(slide_url);
+            new DownloadImageTask().execute("http://www.lge.lu/lgeapp/intranet/2006/1996/Slide"+currentSlideNumber+".JPG");
         }
     }
 
     public void slideForward(View view) {
         currentSlideNumber++;
-        initializeLoadingSequence(view);
-        slide_url = constructURL(currentSlideNumber);
-        WebView slideView = (WebView) findViewById(R.id.slideView);
-        slideView.loadUrl(slide_url);
+        new DownloadImageTask().execute("http://www.lge.lu/lgeapp/intranet/2006/1996/Slide"+currentSlideNumber+".JPG");
 
-    }
-
-    public void initializeLoadingSequence(View view) {
-        WebView slideView = (WebView) findViewById(R.id.slideView);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        slideView.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.VISIBLE);
     }
 }
