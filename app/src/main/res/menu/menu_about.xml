@@ -8,6 +8,6 @@
         android:title="@string/send_feedback"
         android:orderInCategory="100"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_feedback"/>
+        android:icon="@drawable/feedback_white"/>
 
 </menu>

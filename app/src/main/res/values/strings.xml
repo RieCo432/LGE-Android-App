@@ -38,6 +38,12 @@
     <string name="zip_code_location" translatable="false">L-4123 Esch-sur-Alzette</string>
     <string name="sender_id" translatable="false">953167740477</string>
     <string name="generalTopic">/topics/general</string>
+    <string name="device_registered">Device registered!</string>
+    <string name="registration_error">Error registering device!</string>
+    <string name="subscribeToGeneralTopic">Allgemeng Neiegkeeten</string>
+    <string name="getNotificationsFor">Push Benooriichtegungen:</string>
+    <string name="restartAppToApply">Start d\'App nei fier unzewenden!</string>
+    <string name="restart">Neistarten</string>
 
     <string-array name="nav_drawer_titles">
         <item>W\u00EBllkommen</item>
@@ -45,9 +51,12 @@
         <item>Stonnepläng</item>
         <item>Kalenner</item>
         <item>Kontakt</item>
+        <item>Astellungen</item>
         <item>Iwwer</item>
         <item>LGE.lu</item>
         <item>Feedback</item>
     </string-array>
+    <string name="title_activity_settings">Astellungen</string>
+    <string name="action_settings">Astellungen</string>
 
 </resources>

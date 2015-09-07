@@ -1,31 +1,34 @@
 package com.lumi_dos.lge;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.CheckBox;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 
-public class IntranetActivity extends ActionBarActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
     int PROFILE = R.drawable.profile;
-
-    private Toolbar toolbar;
 
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mAdapter;
@@ -34,20 +37,26 @@ public class IntranetActivity extends ActionBarActivity {
 
     ActionBarDrawerToggle mDrawerToggle;
 
-    public static ImageView slideView;
-    public static ProgressBar progressBar;
-
-    public static int currentSlideNumber = 1;
+    public SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intranet);
+        setContentView(R.layout.activity_settings);
+
+        sharedPreferences = sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if(sharedPreferences.getBoolean(Preferences.GENERAL_TOPIC_SUBSCRIBED, true)) {
+            CheckBox generalTopicSubscribed = (CheckBox) findViewById(R.id.subscibeToGeneralTopic);
+            generalTopicSubscribed.setChecked(true);
+        }
+
+
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
 
-        toolbar =(Toolbar) findViewById(R.id.tool_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
         String TITLES[] = getResources().getStringArray(R.array.nav_drawer_titles);
@@ -59,7 +68,7 @@ public class IntranetActivity extends ActionBarActivity {
 
         mRecyclerView.setAdapter(mAdapter);
 
-        final GestureDetector mGestureDetector = new GestureDetector(IntranetActivity.this, new GestureDetector.SimpleOnGestureListener() {
+        final GestureDetector mGestureDetector = new GestureDetector(SettingsActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
             @Override public boolean onSingleTapUp(MotionEvent e) {
                 return true;
@@ -71,14 +80,14 @@ public class IntranetActivity extends ActionBarActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
-                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     Drawer.closeDrawers();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 
-                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked,getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
+                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
                     startActivity(intent);
 
@@ -122,10 +131,6 @@ public class IntranetActivity extends ActionBarActivity {
         mDrawerToggle.syncState();
 
 
-        slideView = (ImageView) findViewById(R.id.slideView);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        new DownloadImageTask().execute("http://www.lge.lu/lgeapp/intranet/2006/1996/Slide1.JPG");
-
     }
 
     public void onStart() {
@@ -144,7 +149,7 @@ public class IntranetActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.global, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 
@@ -152,8 +157,8 @@ public class IntranetActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return true;
         }
@@ -161,17 +166,25 @@ public class IntranetActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onCheckBoxClicked (View view) {
+        boolean checked = ((CheckBox) view).isChecked();
 
-    public void slideBack(View view) {
-        if(currentSlideNumber > 1) {
-            currentSlideNumber--;
-            new DownloadImageTask().execute("http://www.lge.lu/lgeapp/intranet/2006/1996/Slide"+currentSlideNumber+".JPG");
+        switch (view.getId()) {
+            case R.id.subscibeToGeneralTopic:
+                if (checked) {
+                    sharedPreferences.edit().putBoolean(Preferences.GENERAL_TOPIC_SUBSCRIBED, true).apply();
+                } else {
+                    sharedPreferences.edit().putBoolean(Preferences.GENERAL_TOPIC_SUBSCRIBED, false).apply();
+                }
+                sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true).apply();
+
         }
     }
 
-    public void slideForward(View view) {
-        currentSlideNumber++;
-        new DownloadImageTask().execute("http://www.lge.lu/lgeapp/intranet/2006/1996/Slide"+currentSlideNumber+".JPG");
-
+    public void restart(View view) {
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }

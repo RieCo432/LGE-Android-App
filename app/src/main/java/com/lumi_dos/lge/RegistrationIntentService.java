@@ -17,11 +17,15 @@
 package com.lumi_dos.lge;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.ProgressBar;
+
+import com.lumi_dos.lge.MainActivity;
 
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -30,6 +34,8 @@ import com.google.android.gms.iid.InstanceID;
 import java.io.IOException;
 
 public class RegistrationIntentService extends IntentService {
+
+    public String token;
 
     private static final String TAG = "GCM";
 
@@ -42,66 +48,61 @@ public class RegistrationIntentService extends IntentService {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         try {
-            // In the (unlikely) event that multiple refresh operations occur simultaneously,
-            // ensure that they are processed sequentially.
             synchronized (TAG) {
-                // [START register_for_gcm]
-                // Initially this call goes out to the network to retrieve the token, subsequent calls
-                // are local.
-                // [START get_token]
+
                 InstanceID instanceID = InstanceID.getInstance(this);
-                String token = instanceID.getToken(getString(R.string.sender_id),
+                token = instanceID.getToken(getString(R.string.sender_id),
                         GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-                // [END get_token]
                 Log.i(TAG, "GCM Registration Token: " + token);
 
-                // TODO: Implement this method to send any registration to your app's servers.
-                //sendRegistrationToServer(token);
+                sharedPreferences.edit().putString(Preferences.GCM_TOKEN, token).apply();
 
-                // Subscribe to topic channels
-                subscribeTopics(token, "/topics/general");
-
-                // You should store a boolean that indicates whether the generated token has been
-                // sent to your server. If the boolean is false, send the token to your server,
-                // otherwise your server should have already received the token.
-                sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
-                // [END register_for_gcm]
+                sharedPreferences.edit().putBoolean(Preferences.DEVICE_REGISTERED, true).apply();
             }
         } catch (Exception e) {
             Log.d(TAG, "Failed to complete token refresh", e);
-            // If an exception happens while fetching the new token or updating our registration data
-            // on a third-party server, this ensures that we'll attempt the update at a later time.
-            sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false).apply();
+            sharedPreferences.edit().putBoolean(Preferences.DEVICE_REGISTERED, false).apply();
         }
-        // Notify UI that registration has completed, so the progress indicator can be hidden.
-        Intent registrationComplete = new Intent(QuickstartPreferences.REGISTRATION_COMPLETE);
+        Intent registrationComplete = new Intent(Preferences.REGISTRATION_COMPLETE);
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
+
+        if(sharedPreferences.getBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true)) {
+            if(sharedPreferences.getBoolean(Preferences.GENERAL_TOPIC_SUBSCRIBED, true)) {
+                try {
+                    subscribeTopics(token, getString(R.string.generalTopic));
+                    Log.i("GCM", "Subscribed");
+                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("GCM", "Error subscribing");
+                }
+            } else {
+                try {
+                    unsubscribeTopics(token, getString(R.string.generalTopic));
+                    Log.i("GCM", "Unubscribed");
+                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("GCM", "Error unubscribing");
+                }
+            }
+        }
     }
 
-    /**
-     * Persist registration to third-party servers.
-     *
-     * Modify this method to associate the user's GCM registration token with any server-side account
-     * maintained by your application.
-     *
-     * @param token The new token.
-     */
-    /*private void sendRegistrationToServer(String token) {
-        // Add custom implementation, as needed.
-    }*/
 
-    /**
-     * Subscribe to any GCM topics of interest, as defined by the TOPICS constant.
-     *
-     * @param token GCM token
-     * @throws IOException if unable to reach the GCM PubSub service
-     */
-    // [START subscribe_topics]
-    private void subscribeTopics(String token, String topic) throws IOException {
-        GcmPubSub pubSub = GcmPubSub.getInstance(this);
+
+    public Context context = this;
+
+    public void subscribeTopics(String token, String topic) throws IOException {
+        GcmPubSub pubSub = GcmPubSub.getInstance(context);
         pubSub.subscribe(token, topic, null);
         Log.i(TAG, "Topic " + topic + " subscibed");
     }
-    // [END subscribe_topics]
+
+    public void unsubscribeTopics(String token, String topic) throws IOException {
+        GcmPubSub pubSub = GcmPubSub.getInstance(context);
+        pubSub.unsubscribe(token, topic);
+        Log.i(TAG, "Topic " + topic + " unsubscibed");
+    }
 
 }

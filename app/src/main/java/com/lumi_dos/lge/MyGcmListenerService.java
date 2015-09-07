@@ -34,40 +34,15 @@ public class MyGcmListenerService extends GcmListenerService {
 
     private static final String TAG = "GCM";
 
-    /**
-     * Called when message is received.
-     *
-     * @param from SenderID of the sender.
-     * @param data Data bundle containing message data as key/value pairs.
-     *             For Set of keys use data.keySet().
-     */
-    // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString("body");
         Log.i(TAG, "From: " + from);
         Log.i(TAG, "Body: " + message);
 
-        /**
-         * Production applications would usually process the message here.
-         * Eg: - Syncing with server.
-         *     - Store message in local database.
-         *     - Update UI.
-         */
-
-        /**
-         * In some cases it may be useful to show a notification indicating to the user
-         * that a message was received.
-         */
         sendNotification(data);
     }
-    // [END receive_message]
 
-    /**
-     * Create and show a simple notification containing the received GCM message.
-     *
-     * @param data GCM message received.
-     */
     private void sendNotification(Bundle data) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -77,11 +52,11 @@ public class MyGcmListenerService extends GcmListenerService {
         String title = data.getString("title");
         String body = data.getString("body");
         Context context = this;
-        Bitmap large_icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
+        Bitmap large_icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.launcher);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.launcher)
                 .setLargeIcon(large_icon)
                 .setContentTitle(title)
                 .setContentText(body)

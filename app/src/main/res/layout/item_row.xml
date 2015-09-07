@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rowIcon"
         android:paddingLeft="16dp"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/launcher"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -16,9 +16,13 @@
 
 package com.lumi_dos.lge;
 
-public class QuickstartPreferences {
+public class Preferences {
 
-    public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";
+    public static final String DEVICE_REGISTERED = "sentTokenToServer";
     public static final String REGISTRATION_COMPLETE = "registrationComplete";
+    public static final String GCM_STATUS_SHOWN = "gcmStatusShown";
+    public static final String GCM_TOKEN = "test";
+    public static final String SUBSCRIBED_TOPICS_LIST_CHANGED = "indicates if settings have been changed";
+    public static final String GENERAL_TOPIC_SUBSCRIBED = "if the general tópic is subscribed";
 
 }

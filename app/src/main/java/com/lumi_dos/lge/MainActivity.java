@@ -22,12 +22,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private ProgressBar mRegistrationProgressBar;
-    private TextView mInformationTextView;
 
     SharedPreferences prefs;
 
@@ -77,15 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences =
                         PreferenceManager.getDefaultSharedPreferences(context);
                 boolean sentToken = sharedPreferences
-                        .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
-                if (sentToken) {
-                    mInformationTextView.setText("Sent");
-                } else {
-                    mInformationTextView.setText("Error sending token");
+                        .getBoolean(Preferences.DEVICE_REGISTERED, false);
+                if (!sharedPreferences.getBoolean(Preferences.GCM_STATUS_SHOWN, false)) {
+                    if (sentToken) {
+                        Toast toast = Toast.makeText(context, getString(R.string.device_registered), Toast.LENGTH_SHORT);
+                        toast.show();
+                        sharedPreferences.edit().putBoolean(Preferences.GCM_STATUS_SHOWN, true).apply();
+                    } else {
+                        Toast toast = Toast.makeText(context, getString(R.string.registration_error), Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
             }
         };
-        mInformationTextView = (TextView) findViewById(R.id.informationTextView);
 
         if (checkPlayServices()) {
             // Start IntentService to register this application with GCM.
@@ -181,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
+                new IntentFilter(Preferences.REGISTRATION_COMPLETE));
     }
 
     @Override
@@ -206,14 +208,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            Intent intent = new Intent(this, AboutActivity.class);
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
         }

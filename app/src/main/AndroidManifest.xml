@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <permission
         android:name="com.lumi_dos.lge.permission.C2D_MESSAGE"
@@ -18,10 +18,10 @@
     <application
         android:name=".LGE"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -44,7 +44,7 @@
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
             android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute">
+            tools:ignore="UnusedAttribute" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
@@ -53,7 +53,7 @@
             android:name=".IntranetActivity"
             android:label="@string/intranet"
             android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute">
+            tools:ignore="UnusedAttribute" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
@@ -62,7 +62,7 @@
             android:name=".NewsActivity"
             android:label="@string/news"
             android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute">
+            tools:ignore="UnusedAttribute" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
@@ -71,7 +71,7 @@
             android:name=".ContactActivity"
             android:label="@string/contact"
             android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute">
+            tools:ignore="UnusedAttribute" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
@@ -80,7 +80,7 @@
             android:name=".TimetablesActivity"
             android:label="@string/timetables"
             android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute">
+            tools:ignore="UnusedAttribute" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
@@ -92,14 +92,16 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.lumi_dos.lge" />
             </intent-filter>
         </receiver>
         <!-- [END gcm_receiver] -->
 
+
         <!-- [START gcm_listener] -->
         <service
-            android:name="com.lumi_dos.lge.MyGcmListenerService"
+            android:name=".MyGcmListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -108,18 +110,26 @@
         <!-- [END gcm_listener] -->
         <!-- [START instanceId_listener] -->
         <service
-            android:name="com.lumi_dos.lge.MyInstanceIDListenerService"
-            android:exported="false">
+            android:name=".MyInstanceIDListenerService"
+            android:exported="false" >
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
         <!-- [END instanceId_listener] -->
         <service
-            android:name="com.lumi_dos.lge.RegistrationIntentService"
-            android:exported="false">
+            android:name=".RegistrationIntentService"
+            android:exported="false" >
         </service>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lumi_dos.lge.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

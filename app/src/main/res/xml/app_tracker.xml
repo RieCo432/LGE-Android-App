@@ -28,5 +28,6 @@
     <screenName name="com.lumi_dos.lge.NewsActivity">News</screenName>
     <screenName name="com.lumi_dos.lge.ContactActivity">Contact</screenName>
     <screenName name="com.lumi_dos.lge.TimetablesActivity">Timetables</screenName>
+    <screenName name="com.lumi_dos.lge.SettingsActivity">Settings</screenName>
 
 </resources>

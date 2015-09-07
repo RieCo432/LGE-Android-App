@@ -15,6 +15,9 @@
     <string name="title_activity_about">À propos</string>
     <string name="feedback_message">I\u00E7i est ma réation à propos de l\'application LGE:</string>
     <string name="welcome">Bienvenu</string>
+    <string name="device_registered">Device registered!</string>
+    <string name="registration_error">Error registering device!</string>
+    <string name="generalTopic">/topics/general_fr</string>
 
     <string-array name="nav_drawer_titles">
         <item>Bienvenu</item>
@@ -22,8 +25,15 @@
         <item>Horaires</item>
         <item>Calendrier</item>
         <item>Contact</item>
+        <item>Paramètres</item>
         <item>À propos</item>
         <item>LGE.lu</item>
         <item>Réaction</item>
     </string-array>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="subscribeToGeneralTopic">Nouvelles générales</string>
+    <string name="getNotificationsFor">Notifications push:</string>
+    <string name="restartAppToApply">Redémarrer l\'appli pour appliquer!</string>
+    <string name="restart">Redémarrer</string>
 </resources>

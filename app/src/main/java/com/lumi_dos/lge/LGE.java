@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class LGE extends Application {
 
-    public static int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.timetable, R.drawable.news, R.drawable.contact, R.drawable.about, R.drawable.website, R.drawable.feedback};
+    public static int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.timetable, R.drawable.news, R.drawable.contact, R.drawable.settings_grey, R.drawable.about_grey, R.drawable.website, R.drawable.feedback_grey};
 
     public static Intent startActivityOnNavDrawerCAll(int childNumber, Context context, String feedback_address, String feedback_subject, String feedback_message, String choose_email_client) {
         if(childNumber == 1){
@@ -26,11 +26,13 @@ public class LGE extends Application {
         } else if(childNumber == 5) {
             return new Intent(context, ContactActivity.class);
         } else if(childNumber == 6) {
-            return new Intent(context, AboutActivity.class);
+            return new Intent(context, SettingsActivity.class);
         } else if(childNumber == 7) {
+            return new Intent(context, AboutActivity.class);
+        } else if(childNumber == 8) {
             Uri uri = Uri.parse("http://www.lge.lu");
             return new Intent(Intent.ACTION_VIEW, uri);
-        } else if(childNumber == 8) {
+        } else if(childNumber == 9) {
             Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                     "mailto", feedback_address, null));
 
