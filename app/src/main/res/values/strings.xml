@@ -3,7 +3,7 @@
 
     <string name="app_banner">Déi offiziell LGE Android App</string>
     <string name="action_about">Iwwer</string>
-    <string name="app_autor" translatable="false">Colin Ries, 4M6</string>
+    <string name="app_autor" translatable="false">Colin Ries, 3B</string>
     <string name="app_name" translatable="false">LGE</string>
     <string name="base_intranet_url" translatable="false">http://lge.lumi-dos.com/app/intranet.html?slide=</string>
     <string name="base_calendar_url" translatable="false">http://lge.lumi-dos.com/app/calendar.html</string>
@@ -31,7 +31,7 @@
     <string name="street_number" translatable="false">71, rue du Fossé</string>
     <string name="subheader">Déi offiziell App</string>
     <string name="timetables">Stonnepläng</string>
-    <string name="timetable_address_prefix" translatable="false">http://lge.lu/horaires/38/c/c000</string>
+    <string name="timetable_address_prefix" translatable="false">http://lge.lu/horaires/39/c/c000</string>
     <string name="timetable_address_suffix" translatable="false">.htm</string>
     <string name="title_activity_about">Iwwer</string>
     <string name="welcome">W\u00EBllkommen</string>
@@ -58,5 +58,11 @@
     </string-array>
     <string name="title_activity_settings">Astellungen</string>
     <string name="action_settings">Astellungen</string>
+    <string name="whatsnew_content">-Den Intranet get direkt vun LGE.lu gelueden also ass en méi schnell!\n
+        -Push Benooriichtegungen mat News vum Lycée fier emer aktuell ze bleiwen!</string>
+    <string name="whatsnew">Waat ass nei?</string>
+    <string name="checkitout">Weis mer et!</string>
+    <string name="gotit">Ok!</string>
+    <string name="notnow">Net elo!</string>
 
 </resources>

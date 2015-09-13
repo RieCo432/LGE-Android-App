@@ -36,4 +36,10 @@
     <string name="getNotificationsFor">Push notifications:</string>
     <string name="restartAppToApply">Restart app to apply!</string>
     <string name="restart">Restart</string>
+    <string name="gotit">Got it!</string>
+    <string name="notnow">Not now!</string>
+    <string name="whatsnew">What\'s new?</string>
+    <string name="whatsnew_content">-The intranet is loaded directly from LGE.lu and therefor it\'s much faster!\n
+        -Push notifications with news from school so you can always stay up-to-date!</string>
+    <string name="checkitout">Show me!</string>
 </resources>

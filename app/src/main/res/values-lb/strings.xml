@@ -36,4 +36,10 @@
     <string name="getNotificationsFor">Push Benooriichtegungen:</string>
     <string name="restartAppToApply">Start d\'App nei fier unzewenden!</string>
     <string name="restart">Neistarten</string>
+    <string name="gotit">Ok!</string>
+    <string name="notnow">Net elo!</string>
+    <string name="whatsnew">Waat ass nei?</string>
+    <string name="whatsnew_content">-Den Intranet get direkt vun LGE.lu gelueden also ass en méi schnell!\n
+        -Push Benooriichtegungen mat News vum Lycée fier emer aktuell ze bleiwen!</string>
+    <string name="checkitout">Weis mer et!</string>
 </resources>

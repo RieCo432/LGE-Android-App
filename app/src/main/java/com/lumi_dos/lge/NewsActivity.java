@@ -77,7 +77,9 @@ public class NewsActivity extends ActionBarActivity {
 
                     Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                    startActivity(intent);
+                    if(intent!=null) {
+                        startActivity(intent);
+                    }
 
                     return true;
 

@@ -36,4 +36,10 @@
     <string name="getNotificationsFor">Notifications push:</string>
     <string name="restartAppToApply">Redémarrer l\'appli pour appliquer!</string>
     <string name="restart">Redémarrer</string>
+    <string name="gotit">Compris!</string>
+    <string name="notnow">Pas maintenant!</string>
+    <string name="whatsnew">Quoi de nouveau?</string>
+    <string name="whatsnew_content">-L\'intranet est chargé directement de LGE.lu et donc plus vite!\n
+        -Notifications push avec les nouvelles du lycée pour toujours être à jour!</string>
+    <string name="checkitout">Montre-moi!</string>
 </resources>

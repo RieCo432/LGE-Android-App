@@ -79,7 +79,9 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
                     Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                    startActivity(intent);
+                    if(intent!=null) {
+                        startActivity(intent);
+                    }
 
                     return true;
 
@@ -121,6 +123,7 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
         mDrawerToggle.syncState();
 
         Spinner class_selector = (Spinner) findViewById(R.id.class_selector);
+        //String[] classes = classes = new String[]{getString(R.string.sClass), "1A latine", "1A", "1B(F) latine", "1B(F)", "1(B)F", "1C latine", "1C", "1D", "1E", "1D(G)", "1(D)G", "1G", "2A latine", "2A", "2B latine", "2B", "2C latine", "2C", "2C(D) latine", "2C(D)", "2(C)D", "2D(G)", "2(D)G latine", "2(D)G", "2E(F)", "2(E)F latine", "2(E)F", "2G2", "3A classique", "3A moderne", "3B latine", "3B", "3B(C)", "3(B)C", "3C classique", "3C moderne", "3D1 latine", "3D1", "3D2", "3E(F)", "3(E)F classique", "3(E)F", "3G classique", "3G", "IV.1", "41", "IV.2", "42", "43", "44", "45", "46", "V.1", "51", "V.2", "52", "53", "54", "55", "56", "VI 1", "61", "VI 2", "62", "63", "64", "65", "71", "72", "73", "74", "75", "1ère,2e", "2e", "3ème", "DECHARGES", "DISPO", "Activités", "6e"};
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.classes, R.layout.spinner_item);
 
         adapter.setDropDownViewResource(R.layout.spinner_item);

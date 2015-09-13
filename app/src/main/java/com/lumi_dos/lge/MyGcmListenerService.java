@@ -28,6 +28,8 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.gcm.GcmListenerService;
 
 public class MyGcmListenerService extends GcmListenerService {
@@ -39,6 +41,14 @@ public class MyGcmListenerService extends GcmListenerService {
         String message = data.getString("body");
         Log.i(TAG, "From: " + from);
         Log.i(TAG, "Body: " + message);
+
+        Tracker t = ((LGE) this.getApplication()).getTracker(
+                LGE.TrackerName.APP_TRACKER);
+
+        t.send(new HitBuilders.EventBuilder()
+                .setCategory("Notification")
+                .setAction("Received from "+from)
+                .build());
 
         sendNotification(data);
     }

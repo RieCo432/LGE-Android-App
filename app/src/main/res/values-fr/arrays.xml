@@ -4,55 +4,56 @@
         <item>Classe</item>
         <item>1A latine</item>
         <item>1A</item>
-        <item>1B latine</item>
-        <item>1B</item>
-        <item>1B(C)</item>
-        <item>1(B)C</item>
+        <item>1B(F) latine</item>
+        <item>1B(F)</item>
+        <item>1(B)F</item>
         <item>1C latine</item>
         <item>1C</item>
         <item>1D</item>
         <item>1E</item>
-        <item>1F(G)</item>
-        <item>1(F)G</item>
+        <item>1D(G)</item>
+        <item>1(D)G</item>
         <item>1G</item>
         <item>2A latine</item>
         <item>2A</item>
-        <item>2B(C) latine</item>
-        <item>2B(C)</item>
-        <item>2(B)C</item>
+        <item>2B latine</item>
+        <item>2B</item>
+        <item>2C latine</item>
+        <item>2C</item>
         <item>2C(D) latine</item>
         <item>2C(D)</item>
         <item>2(C)D</item>
-        <item>2D</item>
-        <item>2E</item>
-        <item>2F(G) latine</item>
-        <item>2F(G)</item>
-        <item>2(F)G</item>
+        <item>2D(G)</item>
+        <item>2(D)G latine</item>
+        <item>2(D)G</item>
+        <item>2E(F)</item>
+        <item>2(E)F latine</item>
+        <item>2(E)F</item>
         <item>2G2</item>
         <item>3A classique</item>
         <item>3A moderne</item>
-        <item>3B(C) classique</item>
+        <item>3B latine</item>
+        <item>3B</item>
         <item>3B(C)</item>
         <item>3(B)C</item>
         <item>3C classique</item>
         <item>3C moderne</item>
-        <item>3D(G)</item>
-        <item>3(D)G</item>
-        <item>3D</item>
-        <item>3E(F) classique</item>
+        <item>3D1 latine</item>
+        <item>3D1</item>
+        <item>3D2</item>
         <item>3E(F)</item>
         <item>3(E)F classique</item>
         <item>3(E)F</item>
         <item>3G classique</item>
         <item>3G</item>
         <item>IV.1</item>
+        <item>41</item>
         <item>IV.2</item>
         <item>42</item>
         <item>43</item>
         <item>44</item>
         <item>45</item>
         <item>46</item>
-        <item>47</item>
         <item>V.1</item>
         <item>51</item>
         <item>V.2</item>
@@ -61,26 +62,24 @@
         <item>54</item>
         <item>55</item>
         <item>56</item>
-        <item>VI.1</item>
+        <item>VI 1</item>
         <item>61</item>
-        <item>VI.2</item>
+        <item>VI 2</item>
         <item>62</item>
         <item>63</item>
         <item>64</item>
         <item>65</item>
-        <item>66</item>
-        <item>67</item>
         <item>71</item>
         <item>72</item>
         <item>73</item>
         <item>74</item>
         <item>75</item>
-        <item>76</item>
-        <item>1ère, 2e</item>
+        <item>1ère,2e</item>
         <item>2e</item>
         <item>3ème</item>
         <item>DECHARGES</item>
         <item>DISPO</item>
         <item>Activités</item>
+        <item>6e</item>
     </string-array>
 </resources>

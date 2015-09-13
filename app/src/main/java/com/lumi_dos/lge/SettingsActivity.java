@@ -1,8 +1,5 @@
 package com.lumi_dos.lge;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        sharedPreferences = sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if(sharedPreferences.getBoolean(Preferences.GENERAL_TOPIC_SUBSCRIBED, true)) {
             CheckBox generalTopicSubscribed = (CheckBox) findViewById(R.id.subscibeToGeneralTopic);
@@ -89,7 +85,9 @@ public class SettingsActivity extends AppCompatActivity {
 
                     Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                    startActivity(intent);
+                    if(intent!=null) {
+                        startActivity(intent);
+                    }
 
                     return true;
 

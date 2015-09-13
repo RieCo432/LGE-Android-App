@@ -1,7 +1,9 @@
 package com.lumi_dos.lge;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -48,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private ProgressBar mRegistrationProgressBar;
 
-    SharedPreferences prefs;
+    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
@@ -130,8 +132,9 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked,getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                    startActivity(intent);
-
+                    if(intent!=null) {
+                        startActivity(intent);
+                    }
                     return true;
 
                 }
@@ -170,6 +173,41 @@ public class MainActivity extends AppCompatActivity {
 
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        if(sharedPreferences.getBoolean(Preferences.FIRST_START_VERSION_3_0, true)) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setMessage(R.string.whatsnew_content)
+                    .setTitle(R.string.whatsnew);
+
+            builder.setPositiveButton(R.string.checkitout, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    sharedPreferences.edit().putBoolean(Preferences.FIRST_START_VERSION_3_0, false).apply();
+                    launchSettingsActivity();
+                }
+            });
+
+            builder.setNeutralButton(R.string.notnow, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+            builder.setNegativeButton(R.string.gotit, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    sharedPreferences.edit().putBoolean(Preferences.FIRST_START_VERSION_3_0, false).apply();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+
+            dialog.show();
+
+        }
+
     }
 
 
@@ -253,5 +291,10 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    public void launchSettingsActivity() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

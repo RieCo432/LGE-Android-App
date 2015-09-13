@@ -24,5 +24,6 @@ public class Preferences {
     public static final String GCM_TOKEN = "test";
     public static final String SUBSCRIBED_TOPICS_LIST_CHANGED = "indicates if settings have been changed";
     public static final String GENERAL_TOPIC_SUBSCRIBED = "if the general tópic is subscribed";
+    public static final String FIRST_START_VERSION_3_0 ="has user been informed about new features";
 
 }
