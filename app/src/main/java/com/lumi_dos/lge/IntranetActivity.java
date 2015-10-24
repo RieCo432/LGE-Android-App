@@ -1,7 +1,9 @@
 package com.lumi_dos.lge;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -39,6 +41,8 @@ public class IntranetActivity extends ActionBarActivity {
 
     public static int currentSlideNumber = 1;
 
+    public SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +54,18 @@ public class IntranetActivity extends ActionBarActivity {
         toolbar =(Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        String TITLES[] = getResources().getStringArray(R.array.nav_drawer_titles);
-        int ICONS[] = LGE.ICONS;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String TITLES[];
+        int ICONS[];
+
+        if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)){
+            TITLES = getResources().getStringArray(R.array.nav_drawer_titles);
+            ICONS = LGE.ICONS;
+        } else {
+            TITLES = getResources().getStringArray(R.array.nav_drawer_titles_dev);
+            ICONS = LGE.ICONS_DEV;
+        }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);
