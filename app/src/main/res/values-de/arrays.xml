@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="classes">
-        <item>Klasse</item>
+        <item>Wähle</item>
         <item>1A latine</item>
         <item>1A</item>
         <item>1B(F) latine</item>
@@ -40,7 +40,8 @@
         <item>3C moderne</item>
         <item>3D1 latine</item>
         <item>3D1</item>
-        <item>3D2</item>
+        <item>3D(G)</item>
+        <item>3(D)G</item>
         <item>3E(F)</item>
         <item>3(E)F classique</item>
         <item>3(E)F</item>
