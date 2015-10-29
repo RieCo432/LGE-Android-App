@@ -44,7 +44,8 @@
         android:id="@+id/version_build"
         android:layout_below="@+id/version_number"
         android:layout_marginLeft="@dimen/std_text_margin"
-        android:layout_marginTop="0dp"/>
+        android:layout_marginTop="0dp"
+        android:onClick="countTap"/>
 
     <TextView
         android:layout_width="wrap_content"

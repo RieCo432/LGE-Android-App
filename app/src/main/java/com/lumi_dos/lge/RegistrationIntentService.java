@@ -86,6 +86,46 @@ public class RegistrationIntentService extends IntentService {
                     Log.i("GCM", "Error unubscribing");
                 }
             }
+
+            if(sharedPreferences.getBoolean(Preferences.SERVER_BOOT_REPORT, false)) {
+                try {
+                    subscribeTopics(token, getString(R.string.serverbootreporttopic));
+                    Log.i("GCM", "Subscribed");
+                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("GCM", "Error subscribing");
+                }
+            } else {
+                try {
+                    unsubscribeTopics(token, getString(R.string.serverbootreporttopic));
+                    Log.i("GCM", "Unubscribed");
+                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("GCM", "Error unubscribing");
+                }
+            }
+
+            if(sharedPreferences.getBoolean(Preferences.HOLIDAY_COUNTDOWN, false)) {
+                try {
+                    subscribeTopics(token, getString(R.string.holidaycountdowntopic_dev));
+                    Log.i("GCM", "Subscribed");
+                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("GCM", "Error subscribing");
+                }
+            } else {
+                try {
+                    unsubscribeTopics(token, getString(R.string.holidaycountdowntopic_dev));
+                    Log.i("GCM", "Unubscribed");
+                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("GCM", "Error unubscribing");
+                }
+            }
         }
     }
 

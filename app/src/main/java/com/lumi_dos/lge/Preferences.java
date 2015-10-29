@@ -25,5 +25,8 @@ public class Preferences {
     public static final String SUBSCRIBED_TOPICS_LIST_CHANGED = "indicates if settings have been changed";
     public static final String GENERAL_TOPIC_SUBSCRIBED = "if the general tópic is subscribed";
     public static final String FIRST_START_VERSION_3_0 ="has user been informed about new features";
+    public static final String DEVELOPER_MODE = "if application runs in developer mode or not";
+    public static final String SERVER_BOOT_REPORT = "if user wants to get notified about server reboot";
+    public static final String HOLIDAY_COUNTDOWN = "if user wants a daily countdown to next holidays";
 
 }

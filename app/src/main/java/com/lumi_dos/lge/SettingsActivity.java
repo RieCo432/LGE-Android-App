@@ -55,8 +55,16 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        String TITLES[] = getResources().getStringArray(R.array.nav_drawer_titles);
-        int ICONS[] = LGE.ICONS;
+        String TITLES[];
+        int ICONS[];
+
+        if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)){
+            TITLES = getResources().getStringArray(R.array.nav_drawer_titles);
+            ICONS = LGE.ICONS;
+        } else {
+            TITLES = getResources().getStringArray(R.array.nav_drawer_titles_dev);
+            ICONS = LGE.ICONS_DEV;
+        }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -181,7 +189,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void restart(View view) {
         Intent i = getBaseContext().getPackageManager()
-                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
