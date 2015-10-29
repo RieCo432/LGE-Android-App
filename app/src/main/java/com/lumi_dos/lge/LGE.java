@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class LGE extends Application {
 
     public static int ICONS[] = {R.drawable.home, R.drawable.intranet, R.drawable.timetable, R.drawable.news, R.drawable.contact, R.drawable.settings_grey, R.drawable.about_grey, R.drawable.website, R.drawable.feedback_grey};
+    public static int ICONS_DEV[] = {R.drawable.home, R.drawable.intranet, R.drawable.timetable, R.drawable.news, R.drawable.contact, R.drawable.settings_grey, R.drawable.about_grey, R.drawable.website, R.drawable.feedback_grey, R.drawable.developer_grey};
 
     public static Intent startActivityOnNavDrawerCAll(int childNumber, Context context, String feedback_address, String feedback_subject, String feedback_message, String choose_email_client) {
         if(childNumber == 1){
@@ -41,6 +42,8 @@ public class LGE extends Application {
             Intent.createChooser(intent, choose_email_client);
 
             return intent;
+        } else if(childNumber == 10) {
+            return new Intent(context, Developer.class);
         }
 
         return null;

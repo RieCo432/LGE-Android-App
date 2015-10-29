@@ -30,6 +30,20 @@
         <item>LGE.lu</item>
         <item>Feedback</item>
     </string-array>
+
+    <string-array name="nav_drawer_titles_dev">
+        <item>Willkommen</item>
+        <item>Bildschirm</item>
+        <item>Stundenpläne</item>
+        <item>Kalender</item>
+        <item>Kontakt</item>
+        <item>Einstellungen</item>
+        <item>Über</item>
+        <item>LGE.lu</item>
+        <item>Feedback</item>
+        <item>Entwickler</item>
+    </string-array>
+
     <string name="title_activity_settings">Einstellungen</string>
     <string name="action_settings">Einstellungen</string>
     <string name="subscribeToGeneralTopic">Allgemeine Neuigkeiten</string>

@@ -15,11 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 
-public class ContactActivity extends ActionBarActivity {
+public class Developer extends ActionBarActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
@@ -39,7 +40,7 @@ public class ContactActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
+        setContentView(R.layout.activity_developer);
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
@@ -48,6 +49,16 @@ public class ContactActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if(sharedPreferences.getBoolean(Preferences.SERVER_BOOT_REPORT, false)) {
+            CheckBox serverbootreport = (CheckBox) findViewById(R.id.serverBootReportTopic);
+            serverbootreport.setChecked(true);
+        }
+
+        if(sharedPreferences.getBoolean(Preferences.HOLIDAY_COUNTDOWN, false)) {
+            CheckBox serverbootreport = (CheckBox) findViewById(R.id.holidayCountdownTopic);
+            serverbootreport.setChecked(true);
+        }
 
         String TITLES[];
         int ICONS[];
@@ -66,7 +77,7 @@ public class ContactActivity extends ActionBarActivity {
 
         mRecyclerView.setAdapter(mAdapter);
 
-        final GestureDetector mGestureDetector = new GestureDetector(ContactActivity.this, new GestureDetector.SimpleOnGestureListener() {
+        final GestureDetector mGestureDetector = new GestureDetector(Developer.this, new GestureDetector.SimpleOnGestureListener() {
 
             @Override public boolean onSingleTapUp(MotionEvent e) {
                 return true;
@@ -166,5 +177,35 @@ public class ContactActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onCheckBoxClicked (View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch (view.getId()) {
+            case R.id.serverBootReportTopic:
+                if (checked) {
+                    sharedPreferences.edit().putBoolean(Preferences.SERVER_BOOT_REPORT, true).apply();
+                } else {
+                    sharedPreferences.edit().putBoolean(Preferences.SERVER_BOOT_REPORT, false).apply();
+                }
+                sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true).apply();
+
+            case R.id.holidayCountdownTopic:
+                if (checked) {
+                    sharedPreferences.edit().putBoolean(Preferences.HOLIDAY_COUNTDOWN, true).apply();
+                } else {
+                    sharedPreferences.edit().putBoolean(Preferences.HOLIDAY_COUNTDOWN, false).apply();
+                }
+                sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true).apply();
+
+        }
+    }
+
+    public void restart(View view) {
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }

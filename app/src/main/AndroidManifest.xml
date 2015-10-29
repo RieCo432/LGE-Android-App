@@ -130,6 +130,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
         </activity>
+        <activity
+            android:name=".Developer"
+            android:label="@string/title_activity_developer"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lumi_dos.lge.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

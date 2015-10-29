@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private ProgressBar mRegistrationProgressBar;
 
-    SharedPreferences sharedPreferences;
+    public SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,12 +98,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        String TITLES[];
+        int ICONS[];
 
-
-
-        String TITLES[] = getResources().getStringArray(R.array.nav_drawer_titles);
-        int ICONS[] = LGE.ICONS;
+        if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)){
+            TITLES = getResources().getStringArray(R.array.nav_drawer_titles);
+            ICONS = LGE.ICONS;
+        } else {
+            TITLES = getResources().getStringArray(R.array.nav_drawer_titles_dev);
+            ICONS = LGE.ICONS_DEV;
+        }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView.setHasFixedSize(true);

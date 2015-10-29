@@ -56,6 +56,20 @@
         <item>LGE.lu</item>
         <item>Feedback</item>
     </string-array>
+
+    <string-array name="nav_drawer_titles_dev">
+        <item>W\u00EBllkommen</item>
+        <item>Bildschirm</item>
+        <item>Stonnepläng</item>
+        <item>Kalenner</item>
+        <item>Kontakt</item>
+        <item>Astellungen</item>
+        <item>Iwwer</item>
+        <item>LGE.lu</item>
+        <item>Feedback</item>
+        <item>Entwëckler</item>
+    </string-array>
+
     <string name="title_activity_settings">Astellungen</string>
     <string name="action_settings">Astellungen</string>
     <string name="whatsnew_content">-Den Intranet get direkt vun LGE.lu gelueden also ass en méi schnell!\n
@@ -64,5 +78,12 @@
     <string name="checkitout">Weis mer et!</string>
     <string name="gotit">Ok!</string>
     <string name="notnow">Net elo!</string>
+    <string name="title_activity_developer">Developer</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="serverBootReportTopicText">Server Boot Report</string>
+    <string name="serverbootreporttopic">/topics/serverbootreport</string>
+    <string name="holidayCountdownTopicText">Holiday Countdown (Test)</string>
+    <string name="holidaycountdowntopic_dev">/topics/holidayCountdownDev</string>
 
 </resources>

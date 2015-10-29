@@ -9,8 +9,8 @@ android {
         applicationId "com.lumi_dos.lge"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 27
-        versionName "3.0.2"
+        versionCode 28
+        versionName "3.1 pre 1"
     }
     buildTypes {
         release {
