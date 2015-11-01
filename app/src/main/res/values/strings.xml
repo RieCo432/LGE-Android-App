@@ -11,9 +11,9 @@
     <string name="closeDrawer" translatable="false">Close</string>
     <string name="contact">Kontakt</string>
     <string name="credits_copyright" translatable="false">\u00A92015 Colin Ries</string>
-    <string name="developer_label">Entw\u00Ebckler:</string>
+    <string name="developer_label">Entw\u00Ebckler</string>
     <string name="email_secretary" translatable="false">secretariat@lge.lu</string>
-    <string name="feedback_address" translatable="false">lge.app.support@lumi-dos.com</string>
+    <string name="feedback_address" translatable="false">colin.ries@gmail.com</string>
     <string name="feedback_message">Hei ass mein Feedback zur LGE App:</string>
     <string name="feedback_subject">Feedback</string>
     <string name="header" translatable="false">LGE</string>
@@ -85,5 +85,19 @@
     <string name="serverbootreporttopic">/topics/serverbootreport</string>
     <string name="holidayCountdownTopicText">Holiday Countdown (Test)</string>
     <string name="holidaycountdowntopic_dev">/topics/holidayCountdownDev</string>
+    <string name="version">Versioun</string>
+    <string name="build">Build</string>
+    <string name="date">Datum</string>
+    <string name="development_assistance">Entwëcklungs Assistenz</string>
+    <string name="development_assistance_name">Oliver Nick, 2B LGL</string>
+    <string name="design_assistance">Design Assistenz</string>
+    <string name="design_assistance_name">Souheib Allouache</string>
+    <string name="copyright">Copyright</string>
+    <string name="phone_number_text">Telefon</string>
+    <string name="email_address">Email Address</string>
+    <string name="address">Address</string>
+    <string name="feedback_address_text">Feedback Email</string>
+    <string name="title_activity_settings_activity_wrapper">SettingsActivityWrapper</string>
+    <string name="title_activity_settings_wrapper">SettingsWrapperActivity</string>
 
 </resources>

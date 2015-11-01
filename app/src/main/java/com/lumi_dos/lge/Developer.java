@@ -208,4 +208,9 @@ public class Developer extends ActionBarActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
+
+    public void launchWrapper(View view) {
+        Intent i = new Intent(this, SettingsWrapperActivity.class);
+        startActivity(i);
+    }
 }

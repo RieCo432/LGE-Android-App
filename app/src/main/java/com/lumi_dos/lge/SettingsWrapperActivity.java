@@ -1,13 +1,14 @@
 package com.lumi_dos.lge;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,18 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.lumi_dos.lge.R;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
-public class AboutActivity extends AppCompatActivity {
+public class SettingsWrapperActivity extends ActionBarActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
@@ -41,14 +35,13 @@ public class AboutActivity extends AppCompatActivity {
 
     ActionBarDrawerToggle mDrawerToggle;
 
-    public static int tapCounter = 0;
-
     public SharedPreferences sharedPreferences;
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_settings_wrapper);
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
@@ -75,7 +68,7 @@ public class AboutActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(mAdapter);
 
-        final GestureDetector mGestureDetector = new GestureDetector(AboutActivity.this, new GestureDetector.SimpleOnGestureListener() {
+        final GestureDetector mGestureDetector = new GestureDetector(SettingsWrapperActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
             @Override public boolean onSingleTapUp(MotionEvent e) {
                 return true;
@@ -139,38 +132,10 @@ public class AboutActivity extends AppCompatActivity {
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        String versionName = BuildConfig.VERSION_NAME;
-        String versionCode = Integer.toString(BuildConfig.VERSION_CODE);
-        String versionDate = BuildConfig.versionDate;
-
-        String[][] listData =
-                {{getString(R.string.app_name), getString(R.string.app_banner)},
-                        {getString(R.string.version), versionName},
-                        {getString(R.string.build), versionCode},
-                        {getString(R.string.date), versionDate},
-                        {getString(R.string.developer_label), getString(R.string.app_autor)},
-                        {getString(R.string.development_assistance), getString(R.string.development_assistance_name)},
-                        {getString(R.string.design_assistance), getString(R.string.design_assistance_name)},
-                        {getString(R.string.copyright), getString(R.string.credits_copyright)}
-        };
-
-        ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
-
-        ListView aboutView = (ListView) findViewById(R.id.aboutAppList);
-
-        HashMap<String,String> item;
-        for (String[] aListData : listData) {
-            item = new HashMap<String, String>();
-            item.put("line1", aListData[0]);
-            item.put("line2", aListData[1]);
-            list.add(item);
-        }
-
-        ListAdapter myListAdapter = new SimpleAdapter(this, list,
-                android.R.layout.simple_list_item_2,
-                new String[] { "line1","line2" },
-                new int[] {android.R.id.text1, android.R.id.text2});
-        aboutView.setAdapter(myListAdapter);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getFragmentManager().beginTransaction().replace(R.id.general_frame, new SettingsActivity.GeneralPreferenceFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.notification_frame, new SettingsActivity.NotificationPreferenceFragment()).commit();
     }
 
     public void onStart() {
@@ -188,7 +153,7 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_about, menu);
+        getMenuInflater().inflate(R.menu.global, menu);
         return true;
     }
 
@@ -200,33 +165,12 @@ public class AboutActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_feedback) {
-            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                    "mailto", getString(R.string.feedback_address), null));
-
-            String subject = getString(R.string.feedback_subject);
-            String message = getString(R.string.feedback_message);
-
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-            intent.putExtra(Intent.EXTRA_TEXT, message);
-            startActivity(Intent.createChooser(intent, getString(R.string.choose_email_client)));
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void countTap(View view) {
-        tapCounter++;
-        if(tapCounter >= 2 && tapCounter < 7) {
-            Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(7 - tapCounter)+" steps left!", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        if(tapCounter == 7) {
-            Toast toast = Toast.makeText(getApplicationContext(),"Developer Mode activated!", Toast.LENGTH_SHORT);
-            toast.show();
-            sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, true).apply();
-            tapCounter = 0;
-        }
     }
 }

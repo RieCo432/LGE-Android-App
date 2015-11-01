@@ -80,6 +80,15 @@
             android:text="@string/restart"
             android:onClick="restart"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/restartButton"
+            android:id="@+id/launchWrapper"
+            android:text="Launch Wrapper"
+            android:onClick="launchWrapper"/>
+
 
     </RelativeLayout>
 

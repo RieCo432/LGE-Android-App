@@ -76,15 +76,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lumi_dos.lge.MainActivity" />
         </activity>
-        <activity
-            android:name=".TimetablesActivity"
-            android:label="@string/timetables"
-            android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lumi_dos.lge.MainActivity" />
-        </activity>
         <!-- [START gcm_receiver] -->
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -133,6 +124,22 @@
         <activity
             android:name=".Developer"
             android:label="@string/title_activity_developer"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lumi_dos.lge.MainActivity" />
+        </activity>
+        <activity
+            android:name=".TimetablesActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lumi_dos.lge.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsWrapperActivity"
+            android:label="@string/title_activity_settings_wrapper"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
