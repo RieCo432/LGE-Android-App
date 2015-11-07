@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="general_news"
+        android:title="@string/general_notifications"
+        android:summary="@string/general_notifications_summary"
+        android:defaultValue="true" />
+
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <CheckBoxPreference
+        android:key="holiday_countdown"
+        android:title="@string/holiday_countdown"
+        android:summary="@string/holiday_countdown_summary"
+        android:defaultValue="true" />
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+    <ListPreference
+        android:key="my_class"
+        android:title="@string/my_class"
+        android:defaultValue="-1"
+        android:entries="@array/classes"
+        android:entryValues="@array/classes"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+</PreferenceScreen>

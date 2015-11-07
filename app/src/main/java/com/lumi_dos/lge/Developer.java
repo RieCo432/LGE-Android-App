@@ -55,11 +55,6 @@ public class Developer extends ActionBarActivity {
             serverbootreport.setChecked(true);
         }
 
-        if(sharedPreferences.getBoolean(Preferences.HOLIDAY_COUNTDOWN, false)) {
-            CheckBox serverbootreport = (CheckBox) findViewById(R.id.holidayCountdownTopic);
-            serverbootreport.setChecked(true);
-        }
-
         String TITLES[];
         int ICONS[];
 
@@ -158,7 +153,7 @@ public class Developer extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.global, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 
@@ -170,8 +165,8 @@ public class Developer extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return true;
         }
@@ -189,16 +184,6 @@ public class Developer extends ActionBarActivity {
                 } else {
                     sharedPreferences.edit().putBoolean(Preferences.SERVER_BOOT_REPORT, false).apply();
                 }
-                sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true).apply();
-
-            case R.id.holidayCountdownTopic:
-                if (checked) {
-                    sharedPreferences.edit().putBoolean(Preferences.HOLIDAY_COUNTDOWN, true).apply();
-                } else {
-                    sharedPreferences.edit().putBoolean(Preferences.HOLIDAY_COUNTDOWN, false).apply();
-                }
-                sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true).apply();
-
         }
     }
 

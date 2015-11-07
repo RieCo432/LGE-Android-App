@@ -66,12 +66,12 @@ public class RegistrationIntentService extends IntentService {
         Intent registrationComplete = new Intent(Preferences.REGISTRATION_COMPLETE);
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
 
-        if(sharedPreferences.getBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true)) {
-            if(sharedPreferences.getBoolean(Preferences.GENERAL_TOPIC_SUBSCRIBED, true)) {
+        //if(sharedPreferences.getBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, true)) {
+            if(sharedPreferences.getBoolean("general_news", true)) {
                 try {
                     subscribeTopics(token, getString(R.string.generalTopic));
                     Log.i("GCM", "Subscribed");
-                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
+                    //sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.i("GCM", "Error subscribing");
@@ -80,7 +80,7 @@ public class RegistrationIntentService extends IntentService {
                 try {
                     unsubscribeTopics(token, getString(R.string.generalTopic));
                     Log.i("GCM", "Unubscribed");
-                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
+                    //sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.i("GCM", "Error unubscribing");
@@ -91,7 +91,7 @@ public class RegistrationIntentService extends IntentService {
                 try {
                     subscribeTopics(token, getString(R.string.serverbootreporttopic));
                     Log.i("GCM", "Subscribed");
-                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
+                    //sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.i("GCM", "Error subscribing");
@@ -100,33 +100,33 @@ public class RegistrationIntentService extends IntentService {
                 try {
                     unsubscribeTopics(token, getString(R.string.serverbootreporttopic));
                     Log.i("GCM", "Unubscribed");
-                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
+                    //sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.i("GCM", "Error unubscribing");
                 }
             }
 
-            if(sharedPreferences.getBoolean(Preferences.HOLIDAY_COUNTDOWN, false)) {
+            if(sharedPreferences.getBoolean("holiday_countdown", true)) {
                 try {
-                    subscribeTopics(token, getString(R.string.holidaycountdowntopic_dev));
+                    subscribeTopics(token, getString(R.string.holidaycountdowntopic));
                     Log.i("GCM", "Subscribed");
-                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
+                    //sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false).apply();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.i("GCM", "Error subscribing");
                 }
             } else {
                 try {
-                    unsubscribeTopics(token, getString(R.string.holidaycountdowntopic_dev));
+                    unsubscribeTopics(token, getString(R.string.holidaycountdowntopic));
                     Log.i("GCM", "Unubscribed");
-                    sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
+                    //sharedPreferences.edit().putBoolean(Preferences.SUBSCRIBED_TOPICS_LIST_CHANGED, false);
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.i("GCM", "Error unubscribing");
                 }
             }
-        }
+        //}
     }
 
 
@@ -136,7 +136,7 @@ public class RegistrationIntentService extends IntentService {
     public void subscribeTopics(String token, String topic) throws IOException {
         GcmPubSub pubSub = GcmPubSub.getInstance(context);
         pubSub.subscribe(token, topic, null);
-        Log.i(TAG, "Topic " + topic + " subscibed");
+        Log.i(TAG, "Topic " + topic + " subscribed");
     }
 
     public void unsubscribeTopics(String token, String topic) throws IOException {

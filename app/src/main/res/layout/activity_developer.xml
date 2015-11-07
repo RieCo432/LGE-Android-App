@@ -43,29 +43,13 @@
             android:layout_below="@+id/notification_header"
             android:enabled="true"
             android:onClick="onCheckBoxClicked"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="@string/holidayCountdownTopicText"
-            android:layout_below="@+id/serverBootReportTopicText"
-            android:paddingLeft="12dp"
-            android:paddingTop="4dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/holidayCountdownTopicText"/>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:id="@+id/holidayCountdownTopic"
-            android:layout_below="@+id/serverBootReportTopic"
-            android:enabled="true"
-            android:onClick="onCheckBoxClicked"/>
+
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/restartAppToApply"
-            android:layout_below="@+id/holidayCountdownTopicText"
+            android:layout_below="@+id/serverBootReportTopic"
             android:id="@+id/information_footer"
             android:paddingLeft="12dp"
             android:paddingTop="4dp"

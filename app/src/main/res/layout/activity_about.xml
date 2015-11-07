@@ -16,57 +16,11 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"/>
 
-    <TextView
-        android:text="@string/app_banner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/std_text_size"
-        android:textColor="@color/ColorPrimary"
-        android:id="@+id/app_banner"
-        android:layout_below="@id/tool_bar"
-        android:layout_margin="@dimen/std_text_margin"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/std_text_size"
-        android:textColor="@color/ColorPrimary"
-        android:id="@+id/version_number"
-        android:layout_below="@+id/app_banner"
-        android:layout_marginTop="@dimen/geek_info_space_margin"
-        android:layout_marginLeft="@dimen/std_text_margin"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/std_text_size"
-        android:textColor="@color/ColorPrimary"
-        android:id="@+id/version_build"
-        android:layout_below="@+id/version_number"
-        android:layout_marginLeft="@dimen/std_text_margin"
-        android:layout_marginTop="0dp"
-        android:onClick="countTap"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/std_text_size"
-        android:textColor="@color/ColorPrimary"
-        android:id="@+id/version_date"
-        android:layout_below="@+id/version_build"
-        android:layout_marginLeft="@dimen/std_text_margin"
-        android:layout_marginTop="0dp"/>
-
-    <TextView
-        android:text="@string/credits_copyright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/std_text_size"
-        android:textColor="@color/ColorPrimary"
-        android:id="@+id/credits_copyright"
-        android:layout_below="@+id/version_date"
-        android:layout_marginLeft="@dimen/std_text_margin"
-        android:layout_marginTop="@dimen/geek_info_space_margin"/>
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/tool_bar"
+            android:id="@+id/aboutAppList"/>
 
 </RelativeLayout>
 

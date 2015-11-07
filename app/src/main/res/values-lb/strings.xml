@@ -47,13 +47,33 @@
     <string name="title_activity_settings">Astellungen</string>
     <string name="action_settings">Astellungen</string>
     <string name="subscribeToGeneralTopic">Allgemeng Neiegkeeten</string>
-    <string name="getNotificationsFor">Push Benooriichtegungen:</string>
+    <string name="getNotificationsFor">Push Benooriichtegungen</string>
     <string name="restartAppToApply">Start d\'App nei fier unzewenden!</string>
     <string name="restart">Neistarten</string>
     <string name="gotit">Ok!</string>
     <string name="notnow">Net elo!</string>
     <string name="whatsnew">Waat ass nei?</string>
-    <string name="whatsnew_content">-Den Intranet get direkt vun LGE.lu gelueden also ass en méi schnell!\n
-        -Push Benooriichtegungen mat News vum Lycée fier emer aktuell ze bleiwen!</string>
+    <string name="whatsnew_content">-Design Verbesserungen bei "Iwwer", "Kontakt" an an den Astellungen\n
+        -Stell deng Klass an fier dass den Stonneplang dann automatesch gelueden get!\n
+        -Vakanzen Countdown fier dass de emer aktuell bleiws, wéi laang et nach ass!</string>
     <string name="checkitout">Weis mer et!</string>
+    <string name="address">Address</string>
+    <string name="apply">Uwenden</string>
+    <string name="date">Datum</string>
+    <string name="design_assistance">Design Assistenz</string>
+    <string name="development_assistance">Entwëcklungs Assistenz</string>
+    <string name="email_address">Email Address</string>
+    <string name="feedback_address_text">Feedback Address</string>
+    <string name="general_notifications">Allgemeng Benooriichtegungen</string>
+    <string name="general_notifications_summary">Push Benooriichtegungen fier News an allgemeng Informatiounen</string>
+    <string name="holiday_countdown">Vakanzen Countdown</string>
+    <string name="holiday_countdown_summary">Wann aktivéiert kriss de all Dag moies um 7:30 eng Benooriichtegung, déi der seet wéivill Deeg et nach sinn</string>
+    <string name="holidaycountdowntopic">/topics/holidayCountdown_lu</string>
+    <string name="my_class">Meng Klass</string>
+    <string name="phone_number_text">Telefon</string>
+    <string name="serverBootReportTopicText">Server Start Beriicht</string>
+    <string name="title_activity_developer">Entwëckler</string>
+    <string name="title_activity_settings_activity_wrapper">Astellungen</string>
+    <string name="version">Versioun</string>
+    <string name="title_activity_settings_wrapper">Astellungen</string>
 </resources>

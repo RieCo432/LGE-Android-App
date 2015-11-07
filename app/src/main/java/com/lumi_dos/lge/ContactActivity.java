@@ -15,8 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ContactActivity extends ActionBarActivity {
@@ -24,8 +31,6 @@ public class ContactActivity extends ActionBarActivity {
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
     int PROFILE = R.drawable.profile;
-
-    private Toolbar toolbar;
 
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mAdapter;
@@ -44,7 +49,7 @@ public class ContactActivity extends ActionBarActivity {
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
 
-        toolbar =(android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -129,6 +134,45 @@ public class ContactActivity extends ActionBarActivity {
 
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        ListView contactView = (ListView) findViewById(R.id.contactList);
+
+        String[][] listData =
+                {{getString(R.string.phone_number_text), getString(R.string.phone_number)},
+                        {getString(R.string.email_address), getString(R.string.email_secretary)},
+                        {getString(R.string.address), getString(R.string.street_number)+", "+getString(R.string.zip_code_location)},
+                        {getString(R.string.developer_label), getString(R.string.app_autor)},
+                        {getString(R.string.feedback_address_text), getString(R.string.feedback_address)},
+                        {getString(R.string.development_assistance), getString(R.string.development_assistance_name)},
+                        {getString(R.string.design_assistance), getString(R.string.design_assistance_name)}
+                };
+
+        ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
+
+        HashMap<String,String> item;
+        for (String[] aListData : listData) {
+            item = new HashMap<String, String>();
+            item.put("line1", aListData[0]);
+            item.put("line2", aListData[1]);
+            list.add(item);
+        }
+
+        ListAdapter myListAdapter = new SimpleAdapter(this, list,
+                android.R.layout.simple_list_item_2,
+                new String[] { "line1","line2" },
+                new int[] {android.R.id.text1, android.R.id.text2});
+        contactView.setAdapter(myListAdapter);
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public void onStart() {
@@ -160,7 +204,7 @@ public class ContactActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
+            Intent intent = new Intent(this, SettingsWrapperActivity.class);
             startActivity(intent);
             return true;
         }

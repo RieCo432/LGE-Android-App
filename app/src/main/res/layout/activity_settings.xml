@@ -15,7 +15,7 @@
             android:id="@+id/tool_bar"
             layout="@layout/tool_bar"/>
 
-        <TextView
+        <!--<TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/getNotificationsFor"
@@ -60,7 +60,7 @@
             android:layout_below="@+id/information_footer"
             android:id="@+id/restartButton"
             android:text="@string/restart"
-            android:onClick="restart"/>
+            android:onClick="restart"/>-->
 
 
     </RelativeLayout>

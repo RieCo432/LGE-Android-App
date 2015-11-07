@@ -1,9 +1,13 @@
 package com.lumi_dos.lge;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,21 +19,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.lumi_dos.lge.SettingsActivity;
 
-
-public class TimetablesActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class SettingsWrapperActivity extends ActionBarActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
     int PROFILE = R.drawable.profile;
+
 
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mAdapter;
@@ -40,10 +40,11 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
     public SharedPreferences sharedPreferences;
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timetables);
+        setContentView(R.layout.activity_settings_wrapper);
 
         //Get a Tracker (should auto-report)
         ((LGE) getApplication()).getTracker(LGE.TrackerName.APP_TRACKER);
@@ -70,7 +71,7 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
         mRecyclerView.setAdapter(mAdapter);
 
-        final GestureDetector mGestureDetector = new GestureDetector(TimetablesActivity.this, new GestureDetector.SimpleOnGestureListener() {
+        final GestureDetector mGestureDetector = new GestureDetector(SettingsWrapperActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
@@ -135,18 +136,17 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        Spinner class_selector = (Spinner) findViewById(R.id.class_selector);
-        //String[] classes = classes = new String[]{getString(R.string.sClass), "1A latine", "1A", "1B(F) latine", "1B(F)", "1(B)F", "1C latine", "1C", "1D", "1E", "1D(G)", "1(D)G", "1G", "2A latine", "2A", "2B latine", "2B", "2C latine", "2C", "2C(D) latine", "2C(D)", "2(C)D", "2D(G)", "2(D)G latine", "2(D)G", "2E(F)", "2(E)F latine", "2(E)F", "2G2", "3A classique", "3A moderne", "3B latine", "3B", "3B(C)", "3(B)C", "3C classique", "3C moderne", "3D1 latine", "3D1", "3D2", "3E(F)", "3(E)F classique", "3(E)F", "3G classique", "3G", "IV.1", "41", "IV.2", "42", "43", "44", "45", "46", "V.1", "51", "V.2", "52", "53", "54", "55", "56", "VI 1", "61", "VI 2", "62", "63", "64", "65", "71", "72", "73", "74", "75", "1ère,2e", "2e", "3ème", "DECHARGES", "DISPO", "Activités", "6e"};
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.classes, R.layout.spinner_item);
 
-        adapter.setDropDownViewResource(R.layout.spinner_item);
+        getFragmentManager().beginTransaction().replace(R.id.general_frame, new SettingsActivity.GeneralPreferenceFragment()).commit();
+        //getFragmentManager().beginTransaction().replace(R.id.notification_frame, new SettingsActivity.NotificationPreferenceFragment()).commit();
 
-        class_selector.setAdapter(adapter);
+        /*int my_class = sharedPreferences.getInt("my_class", 0);
 
-        class_selector.setOnItemSelectedListener(this);
 
-        String my_class = sharedPreferences.getString("my_class", getString(R.string.select_class));
-        class_selector.setSelection(getIndex(class_selector, my_class));
+        Toast toast = Toast.makeText(this, my_class, Toast.LENGTH_SHORT);
+        toast.show();*/
+
+
 
     }
 
@@ -165,17 +165,20 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.global, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsWrapperActivity.class);
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return true;
         }
@@ -183,51 +186,10 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        if(position != 0) {
-
-            String position_string = Integer.toString(position);
-
-            if(position_string.length() < 2) {
-                position_string = "0" + position_string;
-            }
-
-            String timetable_url = getString(R.string.timetable_address_prefix) + position_string + getString(R.string.timetable_address_suffix);
-
-            WebView timetable_webview = (WebView) findViewById(R.id.timetable_webview);
-            WebSettings timetable_settings = timetable_webview.getSettings();
-            timetable_settings.setSupportZoom(true);
-            timetable_settings.setBuiltInZoomControls(true);
-            timetable_webview.setInitialScale(150);
-
-            timetable_webview.loadUrl(timetable_url);
-
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.select_class), Toast.LENGTH_LONG);
-            toast.show();
-        }
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.select_class), Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    private int getIndex(Spinner spinner, String myString)
-    {
-        int index = 0;
-
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
-                index = i;
-                break;
-            }
-        }
-        return index;
+    public void restart(View view) {
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }

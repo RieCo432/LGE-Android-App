@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,13 +16,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class AboutActivity extends ActionBarActivity {
+
+public class AboutActivity extends AppCompatActivity {
 
     String NAME = "LGE";
     String EMAIL = "secretariat@lge.lu";
@@ -138,14 +144,52 @@ public class AboutActivity extends ActionBarActivity {
         String versionCode = Integer.toString(BuildConfig.VERSION_CODE);
         String versionDate = BuildConfig.versionDate;
 
-        TextView versionNameText = (TextView) findViewById(R.id.version_number);
-        TextView versionCodeText = (TextView) findViewById(R.id.version_build);
-        TextView versionDateText = (TextView) findViewById(R.id.version_date);
+        String[][] listData =
+                {{getString(R.string.app_name), getString(R.string.app_banner)},
+                        {getString(R.string.version), versionName},
+                        {getString(R.string.build), versionCode},
+                        {getString(R.string.date), versionDate},
+                        {getString(R.string.developer_label), getString(R.string.app_autor)},
+                        {getString(R.string.development_assistance), getString(R.string.development_assistance_name)},
+                        {getString(R.string.design_assistance), getString(R.string.design_assistance_name)},
+                        {getString(R.string.copyright), getString(R.string.credits_copyright)}
+        };
 
-        versionNameText.setText("Version: " + versionName);
-        versionCodeText.setText("Build: #" + versionCode);
-        versionDateText.setText("Date: " + versionDate);
+        ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
+        final ListView aboutView = (ListView) findViewById(R.id.aboutAppList);
+
+        HashMap<String,String> item;
+        for (String[] aListData : listData) {
+            item = new HashMap<String, String>();
+            item.put("line1", aListData[0]);
+            item.put("line2", aListData[1]);
+            list.add(item);
+        }
+
+        ListAdapter myListAdapter = new SimpleAdapter(this, list,
+                android.R.layout.simple_list_item_2,
+                new String[] { "line1","line2" },
+                new int[] {android.R.id.text1, android.R.id.text2});
+        aboutView.setAdapter(myListAdapter);
+
+        aboutView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==2) {
+                    if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Developer Mode activated!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, true).apply();
+                    } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Developer Mode deactivated!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, false).apply();
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     public void onStart() {
@@ -189,19 +233,5 @@ public class AboutActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void countTap(View view) {
-        tapCounter++;
-        if(tapCounter >= 2 && tapCounter < 7) {
-            Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(7 - tapCounter)+" steps left!", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        if(tapCounter == 7) {
-            Toast toast = Toast.makeText(getApplicationContext(),"Developer Mode activated!", Toast.LENGTH_SHORT);
-            toast.show();
-            sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, true).apply();
-            tapCounter = 0;
-        }
     }
 }
