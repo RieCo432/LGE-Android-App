@@ -56,7 +56,7 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
         String TITLES[];
         int ICONS[];
 
-        if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)){
+        if (!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)) {
             TITLES = getResources().getStringArray(R.array.nav_drawer_titles);
             ICONS = LGE.ICONS;
         } else {
@@ -92,7 +92,7 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
                     Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                    if(intent!=null) {
+                    if (intent != null) {
                         startActivity(intent);
                     }
 
@@ -145,8 +145,10 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
         class_selector.setOnItemSelectedListener(this);
 
-    }
+        String my_class = sharedPreferences.getString("my_class", getString(R.string.select_class));
+        class_selector.setSelection(getIndex(class_selector, my_class));
 
+    }
 
     public void onStart() {
         super.onStart();
@@ -173,7 +175,7 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
+            Intent intent = new Intent(this, SettingsWrapperActivity.class);
             startActivity(intent);
             return true;
         }
@@ -214,5 +216,18 @@ public class TimetablesActivity extends ActionBarActivity implements AdapterView
 
         Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.select_class), Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    private int getIndex(Spinner spinner, String myString)
+    {
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 }

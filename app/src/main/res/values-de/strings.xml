@@ -47,14 +47,34 @@
     <string name="title_activity_settings">Einstellungen</string>
     <string name="action_settings">Einstellungen</string>
     <string name="subscribeToGeneralTopic">Allgemeine Neuigkeiten</string>
-    <string name="getNotificationsFor">Push Benachrichtigungen:</string>
+    <string name="getNotificationsFor">Push Benachrichtigungen</string>
     <string name="restartAppToApply">App neustarten zum Anwenden!</string>
     <string name="restart">Neustarten</string>
     <string name="gotit">Ok!</string>
     <string name="notnow">Nicht jetzt!</string>
     <string name="whatsnew">Was ist neu?</string>
-    <string name="whatsnew_content">-Das Intranet wird direkt von LGE.lu geladen und ist dadurch schneller!\n
-        -Push Benachrichtigungen mit News der Schule um immer aktuell zu bleiben!</string>
+    <string name="whatsnew_content">-Design Verbesserungen in "Über", "Kontakt" und in den Einstellungen!\n
+        -Stell deine Klasse ein, damit dein Studenplan automatisch ausgewählt wird!\n
+        -Ferien Countdown, damit du immer aktuell bleibst, wie lange es noch ist!</string>
     <string name="checkitout">Zeig\'s mir!</string>
+    <string name="address">Adresse</string>
+    <string name="apply">Anwenden</string>
+    <string name="date">Datum</string>
+    <string name="design_assistance">Design Assistenz</string>
+    <string name="development_assistance">Entwicklungs Assistenz</string>
+    <string name="email_address">Email Adresse</string>
+    <string name="feedback_address_text">Feedback Email</string>
+    <string name="general_notifications">Allgemeine Benachrichtigungen</string>
+    <string name="general_notifications_summary">Push Benachrichtigungen für News und allgemeine Informationen</string>
+    <string name="holiday_countdown">Feriencountdown</string>
+    <string name="holiday_countdown_summary">Wenn aktiviert bekommst du jeden Morgen um 7:30 eine Benachrichtigung, die dir sagt wie viele Tage es noch sind</string>
+    <string name="holidaycountdowntopic">/topics/holidayCountdown_de</string>
+    <string name="my_class">Meine Klasse</string>
+    <string name="phone_number_text">Telefon</string>
+    <string name="serverBootReportTopicText">Server Start Bericht</string>
+    <string name="title_activity_developer">Entwickler</string>
+    <string name="title_activity_settings_activity_wrapper">Einstellungen</string>
+    <string name="title_activity_settings_wrapper">Einstellungen</string>
+    <string name="version">Version</string>
 
 </resources>

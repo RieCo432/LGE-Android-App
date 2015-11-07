@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,9 +19,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
-import com.lumi_dos.lge.R;
+import com.lumi_dos.lge.SettingsActivity;
 
 public class SettingsWrapperActivity extends ActionBarActivity {
 
@@ -54,7 +57,7 @@ public class SettingsWrapperActivity extends ActionBarActivity {
         String TITLES[];
         int ICONS[];
 
-        if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)){
+        if (!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)) {
             TITLES = getResources().getStringArray(R.array.nav_drawer_titles);
             ICONS = LGE.ICONS;
         } else {
@@ -70,7 +73,8 @@ public class SettingsWrapperActivity extends ActionBarActivity {
 
         final GestureDetector mGestureDetector = new GestureDetector(SettingsWrapperActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
-            @Override public boolean onSingleTapUp(MotionEvent e) {
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
 
@@ -80,16 +84,16 @@ public class SettingsWrapperActivity extends ActionBarActivity {
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
-                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                     Drawer.closeDrawers();
 
                     int itemClicked = recyclerView.getChildPosition(child);
 
-                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked,getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
+                    Intent intent = LGE.startActivityOnNavDrawerCAll(itemClicked, getApplicationContext(), getString(R.string.feedback_address), getString(R.string.feedback_subject), getString(R.string.feedback_subject), getString(R.string.choose_email_client));
 
-                    if(intent!=null) {
+                    if (intent != null) {
                         startActivity(intent);
                     }
 
@@ -132,10 +136,18 @@ public class SettingsWrapperActivity extends ActionBarActivity {
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
+
         getFragmentManager().beginTransaction().replace(R.id.general_frame, new SettingsActivity.GeneralPreferenceFragment()).commit();
-        getFragmentManager().beginTransaction().replace(R.id.notification_frame, new SettingsActivity.NotificationPreferenceFragment()).commit();
+        //getFragmentManager().beginTransaction().replace(R.id.notification_frame, new SettingsActivity.NotificationPreferenceFragment()).commit();
+
+        /*int my_class = sharedPreferences.getInt("my_class", 0);
+
+
+        Toast toast = Toast.makeText(this, my_class, Toast.LENGTH_SHORT);
+        toast.show();*/
+
+
+
     }
 
     public void onStart() {
@@ -153,7 +165,7 @@ public class SettingsWrapperActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.global, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 
@@ -165,12 +177,19 @@ public class SettingsWrapperActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void restart(View view) {
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }

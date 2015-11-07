@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         Drawer.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        if(sharedPreferences.getBoolean(Preferences.FIRST_START_VERSION_3_0, true)) {
+        if(sharedPreferences.getBoolean(Preferences.FIRST_START_VERSION_3_1, true)) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton(R.string.checkitout, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    sharedPreferences.edit().putBoolean(Preferences.FIRST_START_VERSION_3_0, false).apply();
+                    sharedPreferences.edit().putBoolean(Preferences.FIRST_START_VERSION_3_1, false).apply();
                     launchSettingsActivity();
                 }
             });
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setNegativeButton(R.string.gotit, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    sharedPreferences.edit().putBoolean(Preferences.FIRST_START_VERSION_3_0, false).apply();
+                    sharedPreferences.edit().putBoolean(Preferences.FIRST_START_VERSION_3_1, false).apply();
                 }
             });
 
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
+            Intent intent = new Intent(this, SettingsWrapperActivity.class);
             startActivity(intent);
             return true;
         }
@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
+        Intent intent = new Intent(this, SettingsWrapperActivity.class);
         startActivity(intent);
     }
 }

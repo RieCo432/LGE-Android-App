@@ -47,13 +47,33 @@
     <string name="title_activity_settings">Paramètres</string>
     <string name="action_settings">Paramètres</string>
     <string name="subscribeToGeneralTopic">Nouvelles générales</string>
-    <string name="getNotificationsFor">Notifications push:</string>
+    <string name="getNotificationsFor">Notifications push</string>
     <string name="restartAppToApply">Redémarrer l\'appli pour appliquer!</string>
     <string name="restart">Redémarrer</string>
     <string name="gotit">Compris!</string>
     <string name="notnow">Pas maintenant!</string>
     <string name="whatsnew">Quoi de nouveau?</string>
-    <string name="whatsnew_content">-L\'intranet est chargé directement de LGE.lu et donc plus vite!\n
-        -Notifications push avec les nouvelles du lycée pour toujours être à jour!</string>
+    <string name="whatsnew_content">-Meilleur design dans "À propos", "Contact" et dans les paramètres!\n
+        -Choisis ta classe pour que ton horaire sera sélectionné automatiquement!\n
+        -Countdown de vacances, pour que tu restes toujours à jour, combien de jours restent!</string>
     <string name="checkitout">Montre-moi!</string>
+    <string name="address">adresse</string>
+    <string name="apply">Appliquer</string>
+    <string name="date">Date</string>
+    <string name="design_assistance">Assistance Design</string>
+    <string name="development_assistance">Assistance Développement</string>
+    <string name="email_address">Adresse Couriel</string>
+    <string name="feedback_address_text">Feedback Courriel</string>
+    <string name="general_notifications">Notifications générales</string>
+    <string name="general_notifications_summary">Notifications push pour news et informations générales</string>
+    <string name="holiday_countdown">Countdown vacances</string>
+    <string name="holiday_countdown_summary">Si activé, tu recevras chaque matin à 7:30 une notification qui te dit combien de jours restent</string>
+    <string name="holidaycountdowntopic">/topics/holidayCountdown_fr</string>
+    <string name="my_class">Ma classe</string>
+    <string name="phone_number_text">Téléphone</string>
+    <string name="title_activity_developer">Développeur</string>
+    <string name="title_activity_settings_activity_wrapper">Paramètres</string>
+    <string name="version">Version</string>
+    <string name="title_activity_settings_wrapper">Paramètres</string>
+    <string name="serverBootReportTopicText">Server Start Report</string>
 </resources>

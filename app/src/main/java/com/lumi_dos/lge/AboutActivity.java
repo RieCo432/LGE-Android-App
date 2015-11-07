@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -156,7 +157,7 @@ public class AboutActivity extends AppCompatActivity {
 
         ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
-        ListView aboutView = (ListView) findViewById(R.id.aboutAppList);
+        final ListView aboutView = (ListView) findViewById(R.id.aboutAppList);
 
         HashMap<String,String> item;
         for (String[] aListData : listData) {
@@ -171,6 +172,24 @@ public class AboutActivity extends AppCompatActivity {
                 new String[] { "line1","line2" },
                 new int[] {android.R.id.text1, android.R.id.text2});
         aboutView.setAdapter(myListAdapter);
+
+        aboutView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==2) {
+                    if(!sharedPreferences.getBoolean(Preferences.DEVELOPER_MODE, false)) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Developer Mode activated!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, true).apply();
+                    } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Developer Mode deactivated!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, false).apply();
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     public void onStart() {
@@ -214,19 +233,5 @@ public class AboutActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void countTap(View view) {
-        tapCounter++;
-        if(tapCounter >= 2 && tapCounter < 7) {
-            Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(7 - tapCounter)+" steps left!", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        if(tapCounter == 7) {
-            Toast toast = Toast.makeText(getApplicationContext(),"Developer Mode activated!", Toast.LENGTH_SHORT);
-            toast.show();
-            sharedPreferences.edit().putBoolean(Preferences.DEVELOPER_MODE, true).apply();
-            tapCounter = 0;
-        }
     }
 }

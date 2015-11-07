@@ -13,7 +13,7 @@
     <string name="credits_copyright" translatable="false">\u00A92015 Colin Ries</string>
     <string name="developer_label">Entw\u00Ebckler</string>
     <string name="email_secretary" translatable="false">secretariat@lge.lu</string>
-    <string name="feedback_address" translatable="false">colin.ries@gmail.com</string>
+    <string name="feedback_address" translatable="false">colin.ries.apps@gmail.com</string>
     <string name="feedback_message">Hei ass mein Feedback zur LGE App:</string>
     <string name="feedback_subject">Feedback</string>
     <string name="header" translatable="false">LGE</string>
@@ -41,7 +41,7 @@
     <string name="device_registered">Device registered!</string>
     <string name="registration_error">Error registering device!</string>
     <string name="subscribeToGeneralTopic">Allgemeng Neiegkeeten</string>
-    <string name="getNotificationsFor">Push Benooriichtegungen:</string>
+    <string name="getNotificationsFor">Push Benooriichtegungen</string>
     <string name="restartAppToApply">Start d\'App nei fier unzewenden!</string>
     <string name="restart">Neistarten</string>
 
@@ -72,32 +72,40 @@
 
     <string name="title_activity_settings">Astellungen</string>
     <string name="action_settings">Astellungen</string>
-    <string name="whatsnew_content">-Den Intranet get direkt vun LGE.lu gelueden also ass en méi schnell!\n
-        -Push Benooriichtegungen mat News vum Lycée fier emer aktuell ze bleiwen!</string>
+    <string name="whatsnew_content">-Design Verbesserungen bei "Iwwer", "Kontakt" an an den Astellungen\n
+        -Stell deng Klass an fier dass den Stonneplang dann automatesch gelueden get!\n
+        -Vakanzen Countdown fier dass de emer aktuell bleiws, wéi laang et nach ass!</string>
     <string name="whatsnew">Waat ass nei?</string>
     <string name="checkitout">Weis mer et!</string>
     <string name="gotit">Ok!</string>
     <string name="notnow">Net elo!</string>
-    <string name="title_activity_developer">Developer</string>
+    <string name="title_activity_developer">Entwëckler</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="serverBootReportTopicText">Server Boot Report</string>
-    <string name="serverbootreporttopic">/topics/serverbootreport</string>
-    <string name="holidayCountdownTopicText">Holiday Countdown (Test)</string>
-    <string name="holidaycountdowntopic_dev">/topics/holidayCountdownDev</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="serverBootReportTopicText">Server Start Beriicht</string>
+    <string name="serverbootreporttopic" translatable="false">/topics/serverbootreport</string>
+    <string name="holidayCountdownTopicText" translatable="false">Holiday Countdown (Test)</string>
+    <string name="holidaycountdowntopic_dev" translatable="false">/topics/holidayCountdownDev</string>
     <string name="version">Versioun</string>
-    <string name="build">Build</string>
+    <string name="build" translatable="false">Build</string>
     <string name="date">Datum</string>
     <string name="development_assistance">Entwëcklungs Assistenz</string>
-    <string name="development_assistance_name">Oliver Nick, 2B LGL</string>
+    <string name="development_assistance_name" translatable="false">Oliver Nick, 2B LGL</string>
     <string name="design_assistance">Design Assistenz</string>
-    <string name="design_assistance_name">Souheib Allouache</string>
-    <string name="copyright">Copyright</string>
+    <string name="design_assistance_name" translatable="false">Souheib Allouache</string>
+    <string name="copyright" translatable="false">Copyright</string>
     <string name="phone_number_text">Telefon</string>
     <string name="email_address">Email Address</string>
     <string name="address">Address</string>
     <string name="feedback_address_text">Feedback Email</string>
-    <string name="title_activity_settings_activity_wrapper">SettingsActivityWrapper</string>
-    <string name="title_activity_settings_wrapper">SettingsWrapperActivity</string>
+    <string name="title_activity_settings_activity_wrapper">Astellungen</string>
+    <string name="title_activity_settings_wrapper">Astellungen</string>
+    <string name="general_notifications">Allgemeng Benooriichtegungen</string>
+    <string name="general_notifications_summary">Push Benooriichtegungen fier News an allgemeng Informatiounen</string>
+    <string name="holiday_countdown">Vakanzen Countdown</string>
+    <string name="holiday_countdown_summary">Wann aktivéiert kriss de all Dag moies um 7:30 eng Benooriichtegung, déi der seet wéivill Deeg et nach sinn</string>
+    <string name="my_class">Meng Klass</string>
+    <string name="apply">Uwenden</string>
+    <string name="holidaycountdowntopic">/topics/holidayCountdown</string>
 
 </resources>

@@ -47,13 +47,33 @@
     <string name="title_activity_settings">Settings</string>
     <string name="action_settings">Settings</string>
     <string name="subscribeToGeneralTopic">General News</string>
-    <string name="getNotificationsFor">Push notifications:</string>
+    <string name="getNotificationsFor">Push notifications</string>
     <string name="restartAppToApply">Restart app to apply!</string>
     <string name="restart">Restart</string>
     <string name="gotit">Got it!</string>
     <string name="notnow">Not now!</string>
     <string name="whatsnew">What\'s new?</string>
-    <string name="whatsnew_content">-The intranet is loaded directly from LGE.lu and therefor it\'s much faster!\n
-        -Push notifications with news from school so you can always stay up-to-date!</string>
+    <string name="whatsnew_content">-Better design in "about", "contact" and in settings!\n
+        -Select your class so that your timetable can be selected automatically!\n
+        -Holiday Countdown, so you can always stay up-to-date how many days left!</string>
     <string name="checkitout">Show me!</string>
+    <string name="address">Address</string>
+    <string name="apply">Apply</string>
+    <string name="date">Date</string>
+    <string name="design_assistance">Design Assistance</string>
+    <string name="development_assistance">Development Assistance</string>
+    <string name="email_address">Email Address</string>
+    <string name="feedback_address_text">Feedback Email</string>
+    <string name="general_notifications">General Notifications</string>
+    <string name="general_notifications_summary">Push notifications for news and general information</string>
+    <string name="holiday_countdown">Holiday Countdown</string>
+    <string name="holiday_countdown_summary">If activated, you\'ll receive every morning at 7:30 a notification that tells you how many days are still left.</string>
+    <string name="holidaycountdowntopic">/topics/holidayCountdown_en</string>
+    <string name="my_class">My class</string>
+    <string name="phone_number_text">Phone</string>
+    <string name="serverBootReportTopicText">Server Boot Report</string>
+    <string name="title_activity_developer">Developer</string>
+    <string name="title_activity_settings_activity_wrapper">Settings</string>
+    <string name="version">Version</string>
+    <string name="title_activity_settings_wrapper">Settings</string>
 </resources>

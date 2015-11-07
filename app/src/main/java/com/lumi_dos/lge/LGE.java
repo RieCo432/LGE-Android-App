@@ -27,7 +27,7 @@ public class LGE extends Application {
         } else if(childNumber == 5) {
             return new Intent(context, ContactActivity.class);
         } else if(childNumber == 6) {
-            return new Intent(context, SettingsActivity.class);
+            return new Intent(context, SettingsWrapperActivity.class);
         } else if(childNumber == 7) {
             return new Intent(context, AboutActivity.class);
         } else if(childNumber == 8) {
